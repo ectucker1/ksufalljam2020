@@ -7,7 +7,6 @@ var max_speed := 50
 
 func _ready():
 	randomize()
-	show()
 
 
 func _physics_process(delta):
