@@ -45,6 +45,20 @@ func _process(delta):
 		secondary_active.process(delta)
 	for passive in passives:
 		passive.process(delta)
+	
+	$Sprites/RightSprite.visible = false
+	$Sprites/LeftSprite.visible = false
+	$Sprites/UpSprite.visible = false
+	$Sprites/DownSprite.visible = false
+	match get_facing():
+		GlobalConsts.DIR_RIGHT:
+			$Sprites/RightSprite.visible = true
+		GlobalConsts.DIR_LEFT:
+			$Sprites/LeftSprite.visible = true
+		GlobalConsts.DIR_UP:
+			$Sprites/UpSprite.visible = true
+		GlobalConsts.DIR_DOWN:
+			$Sprites/DownSprite.visible = true
 
 # Called at a fixed rate. 'delta' is the elapsed time since the previous call.
 func _physics_process(delta):
