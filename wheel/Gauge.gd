@@ -15,7 +15,7 @@ func _physics_process(delta):
 	if increasing:
 		gauge_amount = clamp(gauge_amount + gauge_fill_speed * delta, 0, 1)
 		# Move the second point in the line to increase the meter
-		$LineMeter.points[1].x = 39 * gauge_amount
+		$LineMeter.points[1].x = 40 * gauge_amount
 
 
 func clear():

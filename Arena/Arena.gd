@@ -22,6 +22,7 @@ func spawn_enemy(enemy_type, delay = 0):
 	enemy.position = $EnemySpawnPath/PathFollow2D.position
 	enemy.enemy_type = enemy_type
 	enemy.get_node("SpawnDelay").wait_time = clamp(delay, .01, delay)
+	enemy.connect("died", self, "on_enemy_died")
 	add_child(enemy)
 
 
@@ -32,3 +33,8 @@ func show_wheel():
 func _on_Wheel_visibility_changed():
 	if !$WheelLayer/Wheel.visible:
 		start_wave(3)
+
+
+func on_enemy_died():
+	if get_tree().get_nodes_in_group("enemies").size() == 0:
+		$WheelLayer/Wheel.show_screen()

@@ -25,8 +25,11 @@ var nav : Navigation2D
 var player : Player
 onready var projectile := preload("res://Enemy/Projectile.tscn")
 
+signal died
+
 
 func _ready():
+	visible = false
 	add_to_group("enemies")
 	arena = get_node("../../Arena")
 	if arena:
@@ -158,7 +161,8 @@ func _on_MeleeArea_body_entered(body):
 
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "die":
-		# enemy is dead
+		remove_from_group("enemies")
+		emit_signal("died")
 		queue_free()
 	
 	elif anim_name == "spawn":

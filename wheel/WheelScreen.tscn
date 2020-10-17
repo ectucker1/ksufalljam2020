@@ -47,40 +47,40 @@ b = Vector2( 0.0298462, -194.813 )
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.729412, 1, 1, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.415686, 0.568627, 0.568627, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=11]
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.486275, 0.447059, 0.447059, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=13]
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="Animation" id=14]
@@ -157,6 +157,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MutationDisplay:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -287,13 +299,16 @@ texture = ExtResource( 2 )
 
 [node name="Gauge" type="Node2D" parent="."]
 position = Vector2( 600, 486 )
-scale = Vector2( 4, 4 )
 script = ExtResource( 6 )
 
 [node name="Border" type="Sprite" parent="Gauge"]
+position = Vector2( 0, 2 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
 [node name="LineMask" type="Light2D" parent="Gauge"]
+position = Vector2( 0, 2 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
 mode = 3
 range_layer_max = 10
@@ -301,16 +316,17 @@ range_item_cull_mask = 1024
 
 [node name="LineMeter" type="Line2D" parent="Gauge"]
 light_mask = 1024
-position = Vector2( -19.5, -0.5 )
-points = PoolVector2Array( 0, 0, 39, 0 )
+position = Vector2( -80, 2 )
+scale = Vector2( 4, 4 )
+points = PoolVector2Array( 0, 0, 40, 0 )
 width = 25.0
 default_color = Color( 0.921569, 0.709804, 0.0705882, 1 )
 
 [node name="Button" type="Button" parent="Gauge"]
-margin_left = 23.5
-margin_top = -11.5
-margin_right = 62.5
-margin_bottom = 11.5
+margin_left = 88.0
+margin_top = -54.0
+margin_right = 224.0
+margin_bottom = 58.0
 focus_mode = 0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
