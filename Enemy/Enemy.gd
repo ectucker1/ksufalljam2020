@@ -1,15 +1,16 @@
 extends KinematicBody2D
 
-enum EnemyType {  # placeholder enemy types
-	NONE, ZOMBIE, DOG, BIRD
+enum EnemyType {
+	LION_BEAR,
+	BEE_SCORPION
 }
 
 enum AttackType {
 	MELEE, RANGED
 }
 
-var enemy_type = EnemyType.NONE
-var attack_type = AttackType.RANGED
+var enemy_type = EnemyType.LION_BEAR
+var attack_type = AttackType.MELEE
 var speed := 50
 
 var knockback_velocity := Vector2()
@@ -34,6 +35,7 @@ func _ready():
 	arena = get_node("../../Arena")
 	if arena:
 		nav = arena.get_node("Nav")
+	load_resources()
 
 
 func _physics_process(delta):
@@ -47,6 +49,16 @@ func _physics_process(delta):
 	else:
 		player = get_tree().get_nodes_in_group("players")[0]
 		follow_player(delta)
+
+
+func load_resources():
+	match enemy_type:
+		EnemyType.LION_BEAR:
+			$Sprite.frames = load("res://Enemy/LB_SpriteFrames.tres")
+			attack_type = AttackType.MELEE
+		EnemyType.BEE_SCORPION:
+			$Sprite.frames = load("res://Enemy/BS_SpriteFrames.tres")
+			attack_type = AttackType.RANGED
 
 
 func follow_player(delta):
