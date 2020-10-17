@@ -23,6 +23,7 @@ var projectile_speed := 100
 
 var health := 20
 var dead := false
+var spawning := true
 
 var arena : Node2D
 var nav : Navigation2D
@@ -63,7 +64,7 @@ func load_resources():
 
 func follow_player(delta):
 	# Skip if the level's navigation node doesn't exist or if dead
-	if !nav or dead:
+	if !nav or dead or spawning:
 		return
 	
 	# Find a path to the player
@@ -159,3 +160,10 @@ func _on_Anim_animation_finished(anim_name):
 	if anim_name == "die":
 		# enemy is dead
 		queue_free()
+	
+	elif anim_name == "spawn":
+		spawning = false
+
+
+func _on_SpawnDelay_timeout():
+	$Anim.play("spawn")
