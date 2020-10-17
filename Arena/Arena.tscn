@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Arena/Arena.gd" type="Script" id=2]
@@ -7,11 +7,12 @@
 [ext_resource path="res://Arena/tilemaps/walls.png" type="Texture" id=5]
 [ext_resource path="res://Arena/tilemaps/ground.png" type="Texture" id=6]
 [ext_resource path="res://ui/hud/hud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Arena/Pillar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( -208, -208, 208, -208, 208, 208, -208, 208 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( -208, -208, 208, -208, 208, 208, -208, 208 ) ]
+vertices = PoolVector2Array( 56, -4, 120, 116, 108, 124, -76, 104, 40, 4, 60, -16, 56, -28, 120, -108, 136, -112, 136, 124, 140, -128, 208, -208, 208, 208, 140, 136, 136, -144, 136, 148, 100, 136, -80, 116, -68, -112, 104, -112, 40, -36, 24, -28, -72, -100, 24, -4, -80, 92, 100, -128, -72, -124, -208, -208, 104, -144, -88, -132, 20, -16, -96, 84, -88, -92, -100, -96, -112, 92, 120, -148, -104, -124, -208, 208, -108, -108, -116, 104, -112, 116, -96, 124, 120, 152, 108, 148 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9, 1 ), PoolIntArray( 8, 10, 11, 12, 13, 9 ), PoolIntArray( 0, 5, 1 ), PoolIntArray( 11, 10, 14 ), PoolIntArray( 15, 13, 12 ), PoolIntArray( 3, 2, 16, 17 ), PoolIntArray( 18, 19, 7, 6, 20 ), PoolIntArray( 18, 20, 21, 22 ), PoolIntArray( 23, 4, 3, 24 ), PoolIntArray( 25, 19, 18, 26 ), PoolIntArray( 27, 28, 25, 26, 29 ), PoolIntArray( 22, 21, 30, 31, 32 ), PoolIntArray( 23, 24, 31, 30 ), PoolIntArray( 33, 32, 31, 34 ), PoolIntArray( 11, 14, 35 ), PoolIntArray( 27, 11, 35, 28 ), PoolIntArray( 27, 29, 36 ), PoolIntArray( 37, 27, 36, 38 ), PoolIntArray( 37, 38, 33, 34, 39 ), PoolIntArray( 37, 39, 40 ), PoolIntArray( 37, 40, 41 ), PoolIntArray( 42, 12, 37, 41, 17, 43 ), PoolIntArray( 42, 15, 12 ), PoolIntArray( 43, 17, 16 ) ]
+outlines = [ PoolVector2Array( -208, -208, 208, -208, 208, 208, -208, 208 ), PoolVector2Array( 104, -144, 120, -148, 136, -144, 140, -128, 136, -112, 120, -108, 104, -112, 100, -128 ), PoolVector2Array( 40, -36, 56, -28, 60, -16, 56, -4, 40, 4, 24, -4, 20, -16, 24, -28 ), PoolVector2Array( -96, 84, -80, 92, -76, 104, -80, 116, -96, 124, -112, 116, -116, 104, -112, 92 ), PoolVector2Array( 120, 116, 136, 124, 140, 136, 136, 148, 120, 152, 108, 148, 100, 136, 108, 124 ), PoolVector2Array( -88, -132, -72, -124, -68, -112, -72, -100, -88, -92, -100, -96, -108, -108, -104, -124 ) ]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -35,7 +36,7 @@ script = ExtResource( 2 )
 
 [node name="Nav" type="Navigation2D" parent="."]
 
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Nav"]
+[node name="NavPoly" type="NavigationPolygonInstance" parent="Nav"]
 navpoly = SubResource( 1 )
 
 [node name="EnemySpawnPath" type="Path2D" parent="."]
@@ -56,16 +57,36 @@ visible = false
 player_path = NodePath("../../Player")
 
 [node name="Ground" type="Sprite" parent="."]
+z_index = -5
 texture = ExtResource( 6 )
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Pillar" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 40, -16 )
+
+[node name="Pillar2" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( -96, 104 )
+
+[node name="Pillar3" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 120, 136 )
+
+[node name="Pillar4" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( -88, -112 )
+
+[node name="Pillar5" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 120, -128 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="walls_front" type="Sprite" parent="Walls"]
 position = Vector2( 0, 16 )
+z_index = 10
 texture = ExtResource( 4 )
 
 [node name="walls" type="Sprite" parent="Walls"]
 position = Vector2( 0, 56 )
+z_index = -5
 texture = ExtResource( 5 )
 
 [node name="CollisionTop" type="CollisionShape2D" parent="Walls"]

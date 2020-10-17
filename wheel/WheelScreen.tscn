@@ -243,7 +243,6 @@ polygon = PoolVector2Array( -520, -308, 15, -298, 7, 14, -517, 21 )
 
 [node name="Wheel" type="RigidBody2D" parent="."]
 position = Vector2( 512, 300 )
-rotation = -0.33489
 gravity_scale = 0.0
 angular_damp = 3.0
 

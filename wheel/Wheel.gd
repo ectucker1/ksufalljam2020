@@ -39,9 +39,6 @@ func _physics_process(delta):
 	if spinning and abs($Wheel.angular_velocity) < 0.1:
 		spinning = false
 		$Wheel.angular_velocity = 0
-		# TODO: emit signal or something
-		# We can decide on which type of mutation to give based on the color landed
-		print($Ray.get_collider().name)
 		
 		if ($Ray.get_collider().name == "Red"):
 			add_active()
