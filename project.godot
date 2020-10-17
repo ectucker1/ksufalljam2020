@@ -164,6 +164,15 @@ attack_secondary={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="default"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="player atack"
+2d_physics/layer_5="enemy attack"
+2d_physics/layer_6="walls"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
