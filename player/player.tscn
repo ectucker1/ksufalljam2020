@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/walkcycles.png" type="Texture" id=2]
 [ext_resource path="res://player/enemy_damage_area.gd" type="Script" id=3]
 [ext_resource path="res://player/mutations/basic_attack.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/shake_camera.gd" type="Script" id=5]
+[ext_resource path="res://player/mutations/treads.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -139,7 +140,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 11
+frame = 9
 __meta__ = {
 "_edit_lock_": true
 }
@@ -149,7 +150,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 8
+frame = 6
 __meta__ = {
 "_edit_lock_": true
 }
@@ -159,7 +160,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 5
+frame = 3
 __meta__ = {
 "_edit_lock_": true
 }
@@ -169,7 +170,6 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 2
 __meta__ = {
 "_edit_lock_": true
 }
@@ -215,3 +215,9 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/HurtShot/active = false
 parameters/States/playback = SubResource( 11 )
+
+[node name="Treads" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 6 )
+z_index = -1
+texture = ExtResource( 6 )
