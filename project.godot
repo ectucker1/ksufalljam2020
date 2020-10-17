@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ksufalljam 2020"
-run/main_scene="res://level/test_level.tscn"
+run/main_scene="res://Arena/Arena.tscn"
 config/icon="res://icon.png"
 
 [autoload]

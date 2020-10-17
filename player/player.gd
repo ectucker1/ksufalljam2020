@@ -31,7 +31,6 @@ func _ready():
 	status.player = self
 	
 	set_primary_active(BasicAttackMutation.new())
-	add_passive(VampirismMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
