@@ -66,9 +66,12 @@ func follow_player(delta):
 		var distance_point = position.distance_to(path[0])
 		
 		if distance_walk < distance_point:
-			move_and_collide(position.direction_to(path[0]) * distance_walk)
+			var direction = position.direction_to(path[0])
+			face_direction(direction)
+			move_and_collide(direction * distance_walk)
 		
 		else:
+			face_direction(position.direction_to(path[0]))
 			move_and_collide(path[0] - position)
 			path.remove(0)
 		
@@ -88,6 +91,19 @@ func follow_player(delta):
 				$SightArea/Ray.force_raycast_update()
 				if $SightArea/Ray.get_collider() == player:
 					ranged_attack($SightArea/Ray.cast_to.normalized())
+
+
+func face_direction(direction : Vector2):
+	if abs(direction.x) > abs(direction.y) / 2:
+		if direction.x > 0 and $Sprite.animation != "walk_right":
+			$Sprite.animation = "walk_right"
+		elif direction.x < 0 and $Sprite.animation != "walk_left":
+			$Sprite.animation = "walk_left"
+	else:
+		if direction.y > 0 and $Sprite.animation != "walk_down":
+			$Sprite.animation = "walk_down"
+		elif direction.y < 0 and $Sprite.animation != "walk_up":
+			$Sprite.animation = "walk_up"
 
 
 func melee_attack():

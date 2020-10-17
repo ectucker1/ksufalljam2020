@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Arena/Arena.gd" type="Script" id=2]
+[ext_resource path="res://wheel/WheelScreen.tscn" type="PackedScene" id=3]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -128, -128, 128, -128, 128, 128, -128, 128 )
@@ -39,3 +40,9 @@ curve = SubResource( 2 )
 position = Vector2( -112, -112 )
 rotation = -1.94462e-06
 rotate = false
+
+[node name="WheelLayer" type="CanvasLayer" parent="."]
+
+[node name="Wheel" parent="WheelLayer" instance=ExtResource( 3 )]
+visible = false
+[connection signal="visibility_changed" from="WheelLayer/Wheel" to="." method="_on_Wheel_visibility_changed"]

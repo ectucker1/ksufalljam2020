@@ -5,7 +5,7 @@ onready var enemy_scene := preload("res://Enemy/Enemy.tscn")
 
 func _ready():
 	randomize()
-	start_wave(3)
+	show_wheel()
 
 
 func start_wave(num_enemies = 3):
@@ -19,3 +19,12 @@ func spawn_enemy():
 	$EnemySpawnPath/PathFollow2D.unit_offset = randf()
 	enemy.position = $EnemySpawnPath/PathFollow2D.position
 	add_child(enemy)
+
+
+func show_wheel():
+	$WheelLayer/Wheel.show()
+
+
+func _on_Wheel_visibility_changed():
+	if !$WheelLayer/Wheel.visible:
+		start_wave(3)
