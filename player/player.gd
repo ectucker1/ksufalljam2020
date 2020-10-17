@@ -30,7 +30,7 @@ func _ready():
 	add_to_group("players")
 	status.player = self
 	
-	set_primary_active(HornsMutation.new())
+	add_passive(FireMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
