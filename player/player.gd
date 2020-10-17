@@ -33,8 +33,8 @@ func _ready():
 	
 	connect("hurt", self, "hurt_anim")
 	
-	set_primary_active(BasicAttackMutation.new())
-	add_passive(SharpTeethMutation.new())
+	set_primary_active(SpitMutation.new())
+	#add_passive(SharpTeethMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
