@@ -15,6 +15,9 @@ var timeout := 0.0
 func get_name():
 	return "Warp Drive"
 
+func get_description():
+	return "Teleport to a random position"
+
 func physics_process(delta):
 	timeout -= delta
 

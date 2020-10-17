@@ -10,6 +10,9 @@ var timeout := 0.0
 func get_name():
 	return "Basic Attack"
 
+func get_description():
+	return "Slash for 5 damage"
+
 func physics_process(delta):
 	timeout -= delta
 
