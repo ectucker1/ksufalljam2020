@@ -49,15 +49,15 @@ animation = "Hurt"
 
 [sub_resource type="AnimationNodeOneShot" id=6]
 
-[sub_resource type="AnimationNodeStateMachine" id=8]
+[sub_resource type="AnimationNodeStateMachine" id=7]
 
-[sub_resource type="AnimationNodeBlendTree" id=7]
+[sub_resource type="AnimationNodeBlendTree" id=8]
 graph_offset = Vector2( -652.145, 101.333 )
 nodes/Animation/node = SubResource( 5 )
 nodes/Animation/position = Vector2( -186.667, 253.333 )
 nodes/HurtShot/node = SubResource( 6 )
 nodes/HurtShot/position = Vector2( 66.6667, 120 )
-nodes/States/node = SubResource( 8 )
+nodes/States/node = SubResource( 7 )
 nodes/States/position = Vector2( -200, 106.667 )
 node_connections = [ "output", 0, "HurtShot", "HurtShot", 0, "States", "HurtShot", 1, "Animation" ]
 
@@ -113,7 +113,7 @@ __meta__ = {
 anims/Hurt = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 7 )
+tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/HurtShot/active = false

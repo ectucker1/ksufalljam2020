@@ -1,10 +1,15 @@
 extends KinematicBody2D
 
-enum Type {  # placeholder enemy types
+enum EnemyType {  # placeholder enemy types
 	NONE, ZOMBIE, DOG, BIRD
 }
 
-var type = Type.NONE
+enum AttackType {
+	MELEE, RANGED
+}
+
+var enemy_type = EnemyType.NONE
+var attack_type = AttackType.RANGED
 var speed := 50
 
 var knockback_velocity := Vector2()
@@ -13,12 +18,15 @@ var knockback_damp := 60
 var melee_distance := 25
 var melee_attack := 10
 
+var projectile_speed := 100
+
 var health := 20
 var dead := false
 
 var arena : Node2D
 var nav : Navigation2D
 var player : Player
+onready var projectile := preload("res://Enemy/Projectile.tscn")
 
 
 func _ready():
@@ -66,9 +74,20 @@ func follow_player(delta):
 		
 		distance_walk -= distance_point
 	
-	# Attack if close enough
-	if position.distance_to(player.position) < melee_distance:
-		melee_attack()
+	match attack_type:
+		AttackType.MELEE:
+			# attack if close enough
+			if position.distance_to(player.position) < melee_distance:
+				melee_attack()
+		
+		AttackType.RANGED:
+			# attack if within sight
+			if $SightArea.overlaps_body(player):
+				# use raycast to make sure no obstacles are in the way
+				$SightArea/Ray.cast_to = player.position - position
+				$SightArea/Ray.force_raycast_update()
+				if $SightArea/Ray.get_collider() == player:
+					ranged_attack($SightArea/Ray.cast_to.normalized())
 
 
 func melee_attack():
@@ -79,6 +98,15 @@ func melee_attack():
 	# The attack animation enables the area's collision
 	$MeleeArea.look_at(player.position)
 	$MeleeArea/Anim.play("attack")
+
+
+func ranged_attack(direction : Vector2):
+	if $RangedAttackCooldown.is_stopped():
+		var p = projectile.instance()
+		p.position = position + direction
+		p.velocity = direction * projectile_speed
+		get_parent().add_child(p)
+		$RangedAttackCooldown.start()
 
 
 func take_damage(amount := 5):
