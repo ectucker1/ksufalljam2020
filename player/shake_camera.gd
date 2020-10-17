@@ -21,7 +21,7 @@ func _ready():
 
 func _process(delta):
 	time += delta
-	var shake = GlobalEffects.trauma * GlobalEffects.trauma
+	var shake = GlobalEffects.trauma * GlobalEffects.trauma * GlobalConsts.player.status.screenshake_mult
 	offset_h = shake * noise.get_noise_2d(0, time) * MAX_X
 	offset_v = shake * noise.get_noise_2d(1, time) * MAX_Y
 	global_rotation = shake * noise.get_noise_2d(2, time) * MAX_ROT
