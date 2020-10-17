@@ -8,6 +8,9 @@ var type = Type.NONE
 var speed := 50
 var melee_distance := 25
 
+var health := 20
+var dead := false
+
 var arena : Node2D
 var nav : Navigation2D
 var player : KinematicBody2D
@@ -26,8 +29,8 @@ func _physics_process(delta):
 
 
 func follow_player(delta):
-	# Skip if the level's navigation node doesn't exist
-	if !nav:
+	# Skip if the level's navigation node doesn't exist or if dead
+	if !nav or dead:
 		return
 	
 	# Find a path to the player
@@ -65,7 +68,26 @@ func melee_attack():
 	$MeleeArea/Anim.play("attack")
 
 
+func take_damage(amount := 5):
+	health -= amount
+	if health > 0:
+		$Anim.play("hurt")
+	else:
+		die()
+
+
+func die():
+	dead = true
+	$Anim.play("die")
+
+
 func _on_MeleeArea_body_entered(body):
 	if body == player:
 		# TODO: deal damage
 		pass
+
+
+func _on_Anim_animation_finished(anim_name):
+	if anim_name == "die":
+		# enemy is dead
+		queue_free()
