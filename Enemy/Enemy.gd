@@ -6,14 +6,16 @@ enum Type {  # placeholder enemy types
 
 var type = Type.NONE
 var speed := 50
+
 var melee_distance := 25
+var melee_attack := 10
 
 var health := 20
 var dead := false
 
 var arena : Node2D
 var nav : Navigation2D
-var player : KinematicBody2D
+var player : Player
 
 
 func _ready():
@@ -83,8 +85,7 @@ func die():
 
 func _on_MeleeArea_body_entered(body):
 	if body == player:
-		# TODO: deal damage
-		pass
+		player.status.health -= melee_attack
 
 
 func _on_Anim_animation_finished(anim_name):
