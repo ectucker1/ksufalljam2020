@@ -4,8 +4,8 @@
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/BS_SpriteFrames.tres" type="SpriteFrames" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.56807, 6.85499 )
+[sub_resource type="CircleShape2D" id=8]
+radius = 5.94572
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 91.412
@@ -122,7 +122,7 @@ animation = "walk_left"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="SightArea" type="Area2D" parent="."]

@@ -24,7 +24,7 @@ func spawn_enemy(enemy_type, delay = 0):
 	$EnemySpawnPath/PathFollow2D.unit_offset = randf()
 	enemy.position = $EnemySpawnPath/PathFollow2D.position
 	enemy.enemy_type = enemy_type
-	enemy.get_node("SpawnDelay").wait_time = delay
+	enemy.get_node("SpawnDelay").wait_time = clamp(delay, .01, delay)
 	add_child(enemy)
 
 
