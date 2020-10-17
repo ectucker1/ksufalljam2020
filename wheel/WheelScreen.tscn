@@ -117,7 +117,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "hide_mutation"
 tracks/0/type = "value"
 tracks/0/path = NodePath("MutationDisplay:modulate")
@@ -144,8 +144,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "show_mutation"
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("MutationDisplay:modulate")
 tracks/0/interp = 1
@@ -248,7 +247,8 @@ texture = ExtResource( 4 )
 [node name="LineMask" type="Light2D" parent="Gauge"]
 texture = ExtResource( 5 )
 mode = 3
-range_layer_max = 1
+range_layer_min = 10
+range_layer_max = 10
 range_item_cull_mask = 1024
 
 [node name="LineMeter" type="Line2D" parent="Gauge"]
@@ -271,8 +271,8 @@ __meta__ = {
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/appear = SubResource( 9 )
 anims/disappear = SubResource( 10 )
-anims/hide_mutation = SubResource( 12 )
-anims/show_mutation = SubResource( 11 )
+anims/hide_mutation = SubResource( 11 )
+anims/show_mutation = SubResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )

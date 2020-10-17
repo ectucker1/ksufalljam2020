@@ -1,4 +1,4 @@
-extends TileMap
+extends Node2D
 
 enum EnemyType {
 	LION_BEAR,
