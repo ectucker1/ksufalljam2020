@@ -21,7 +21,6 @@ func _physics_process(delta):
 func clear():
 	gauge_amount = 0
 	$LineMeter.points[1].x = 0
-	$Button.disabled = false
 
 
 func _on_Button_button_down():

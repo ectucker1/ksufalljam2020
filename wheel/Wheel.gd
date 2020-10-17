@@ -7,6 +7,7 @@ var max_speed := 50
 
 func _ready():
 	randomize()
+	show()
 
 
 func _physics_process(delta):
@@ -17,12 +18,21 @@ func _physics_process(delta):
 		# We can decide on which type of mutation to give based on the color landed
 		print($Ray.get_collider().name)
 		
-		$Gauge.clear()
+		hide()
 
 
 func spin_wheel(speed = 70):
 	$Wheel.angular_velocity = -(speed + randf() * 2)  # randomize slightly
 	spinning = true
+
+
+func show():
+	$Gauge.clear()
+	$Anim.play("appear")
+
+
+func hide():
+	$Anim.play("disappear")
 
 
 func _on_Gauge_gauge_released(amount):
