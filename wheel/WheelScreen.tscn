@@ -1,40 +1,43 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://wheel/wheel.png" type="Texture" id=1]
 [ext_resource path="res://wheel/arrow.png" type="Texture" id=2]
 [ext_resource path="res://wheel/Wheel.gd" type="Script" id=3]
+[ext_resource path="res://wheel/gauge.png" type="Texture" id=4]
+[ext_resource path="res://wheel/gauge_mask.png" type="Texture" id=5]
+[ext_resource path="res://wheel/Gauge.gd" type="Script" id=6]
 
 [sub_resource type="SegmentShape2D" id=1]
-a = Vector2( 0, -48 )
-b = Vector2( 33.966, -33.7092 )
+a = Vector2( 0.0149193, -97.4064 )
+b = Vector2( 68.2606, -68.3629 )
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( 33.7092, 33.966 )
-b = Vector2( 48.7032, 0.00744343 )
-
-[sub_resource type="SegmentShape2D" id=5]
-a = Vector2( -33.966, 33.7092 )
-b = Vector2( -0.00744343, 48.7032 )
-
-[sub_resource type="SegmentShape2D" id=6]
-a = Vector2( -46, 16 )
-b = Vector2( -43, -21 )
+a = Vector2( 68.3629, 68.2606 )
+b = Vector2( 97.4064, 0.0149193 )
 
 [sub_resource type="SegmentShape2D" id=3]
-a = Vector2( 48.7032, 0.00744343 )
-b = Vector2( 33.966, -33.7092 )
+a = Vector2( -68.2606, 68.3629 )
+b = Vector2( -0.0149193, 97.4064 )
 
 [sub_resource type="SegmentShape2D" id=4]
-a = Vector2( 33.7092, 33.966 )
-b = Vector2( -0.00744343, 48.7032 )
+a = Vector2( -91, 32 )
+b = Vector2( -87, -42 )
+
+[sub_resource type="SegmentShape2D" id=5]
+a = Vector2( 97.4064, 0.0149193 )
+b = Vector2( 68.2606, -68.3629 )
+
+[sub_resource type="SegmentShape2D" id=6]
+a = Vector2( 68.3629, 68.2606 )
+b = Vector2( -0.0149193, 97.4064 )
 
 [sub_resource type="SegmentShape2D" id=7]
-a = Vector2( -48.7032, -0.00744343 )
-b = Vector2( -33.966, 33.7092 )
+a = Vector2( -96.4619, 0.313745 )
+b = Vector2( -68.2606, 68.3629 )
 
 [sub_resource type="SegmentShape2D" id=8]
-a = Vector2( -33.7092, -33.966 )
-b = Vector2( -0.321222, -47.7587 )
+a = Vector2( -68.3629, -68.2606 )
+b = Vector2( 0.0149193, -97.4064 )
 
 [node name="WheelScreen" type="Node2D"]
 script = ExtResource( 3 )
@@ -45,7 +48,11 @@ gravity_scale = 0.0
 angular_damp = 3.0
 
 [node name="Sprite" type="Sprite" parent="Wheel"]
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Red" type="StaticBody2D" parent="Wheel"]
 
@@ -56,19 +63,19 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Wheel/Red"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Wheel/Red"]
 rotation = 0.33489
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="Blue" type="StaticBody2D" parent="Wheel"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/Blue"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Wheel/Blue"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Wheel/Blue"]
 shape = SubResource( 7 )
@@ -76,16 +83,51 @@ shape = SubResource( 7 )
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Wheel/Blue"]
 shape = SubResource( 8 )
 
-[node name="ArrowSprite" type="Sprite" parent="."]
-position = Vector2( 0, -48 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 0, -54 )
+[node name="Ray" type="RayCast2D" parent="."]
+position = Vector2( 0, -105 )
 enabled = true
 cast_to = Vector2( 0, 30 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ArrowSprite" type="Sprite" parent="Ray"]
+position = Vector2( 0, 6 )
+texture = ExtResource( 2 )
+
+[node name="Gauge" type="Node2D" parent="."]
+position = Vector2( 41, 95 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 6 )
+
+[node name="Border" type="Sprite" parent="Gauge"]
+texture = ExtResource( 4 )
+
+[node name="LineMask" type="Light2D" parent="Gauge"]
+texture = ExtResource( 5 )
+mode = 3
+range_item_cull_mask = 1024
+
+[node name="LineMeter" type="Line2D" parent="Gauge"]
+light_mask = 1024
+position = Vector2( -19.5, -0.5 )
+points = PoolVector2Array( 0, 0, 39, 0 )
+width = 25.0
+default_color = Color( 0.921569, 0.709804, 0.0705882, 1 )
+
+[node name="Button" type="Button" parent="Gauge"]
+margin_left = 23.5
+margin_top = -11.5
+margin_right = 62.5
+margin_bottom = 11.5
+text = "Spin"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.25, 0.25 )
+zoom = Vector2( 0.5, 0.5 )
+[connection signal="gauge_released" from="Gauge" to="." method="_on_Gauge_gauge_released"]
+[connection signal="button_down" from="Gauge/Button" to="Gauge" method="_on_Button_button_down"]
+[connection signal="button_up" from="Gauge/Button" to="Gauge" method="_on_Button_button_up"]
