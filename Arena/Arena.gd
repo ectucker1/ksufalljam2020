@@ -1,9 +1,6 @@
 extends Node2D
 
-enum EnemyType {
-	LION_BEAR,
-	BEE_SCORPION
-}
+enum EnemyType { LB, BS, DS, JD }
 
 onready var enemy_scene := preload("res://Enemy/Enemy.tscn")
 

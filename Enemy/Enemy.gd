@@ -1,15 +1,10 @@
 extends KinematicBody2D
 
-enum EnemyType {
-	LION_BEAR,
-	BEE_SCORPION
-}
+enum EnemyType { LB, BS, DS, JD }
 
-enum AttackType {
-	MELEE, RANGED
-}
+enum AttackType { MELEE, RANGED }
 
-var enemy_type = EnemyType.LION_BEAR
+var enemy_type = EnemyType.LB
 var attack_type = AttackType.MELEE
 var speed := 50
 
@@ -54,12 +49,17 @@ func _physics_process(delta):
 
 func load_resources():
 	match enemy_type:
-		EnemyType.LION_BEAR:
+		EnemyType.LB:
 			$Sprite.frames = load("res://Enemy/LB_SpriteFrames.tres")
 			attack_type = AttackType.MELEE
-		EnemyType.BEE_SCORPION:
+		EnemyType.BS:
 			$Sprite.frames = load("res://Enemy/BS_SpriteFrames.tres")
 			attack_type = AttackType.RANGED
+		EnemyType.DS:
+			$Sprite.frames = load("res://Enemy/DS_SpriteFrames.tres")
+			attack_type = AttackType.MELEE
+		EnemyType.JD:
+			$Sprite.frames = load("res://Enemy/JD_SpriteFrames.tres")
 
 
 func follow_player(delta):
