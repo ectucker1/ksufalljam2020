@@ -12,6 +12,9 @@ var fire_scene = preload("res://player/mutations/fire.tscn")
 func get_name():
 	return "Fire Paws"
 
+func get_description():
+	return "Leave a trail of flames"
+
 func physics_process(delta):
 	timeout -= delta
 	if timeout <= 0.0 and player.velocity != Vector2.ZERO:

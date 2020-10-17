@@ -9,6 +9,9 @@ var player
 func get_name():
 	return "Base Mutation"
 
+func get_description():
+	return "Base Mutation Description"
+
 # Define all the things a mutation can react to
 
 # Called when a mutation is attached to modify player state

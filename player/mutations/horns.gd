@@ -13,6 +13,9 @@ var target_dir := Vector2.ZERO
 func get_name():
 	return "Goat Horns"
 
+func get_description():
+	return "Charge at enemies for 10 damage"
+
 func physics_process(delta):
 	timeout -= delta
 	if timeout > COOLDOWN - SPEED_TIME:

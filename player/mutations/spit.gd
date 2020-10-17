@@ -13,6 +13,9 @@ var bullet_scene = preload("res://player/mutations/spit.tscn")
 func get_name():
 	return "Acid Spit"
 
+func get_description():
+	return "Shoot spitballs for 10 damage"
+
 func physics_process(delta):
 	timeout -= delta
 

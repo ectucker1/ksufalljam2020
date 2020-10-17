@@ -75,6 +75,7 @@ func add_active():
 			player.set_secondary_active(choice)
 			$MutationDisplay/Layout/MutationBinding.text = "Bound to M2"
 		$MutationDisplay/Layout/MutationName.text = choice.get_name()
+		$MutationDisplay/Layout/MutationDescription.text = choice.get_description()
 		last_primary = not last_primary
 	else:
 		$MutationDisplay/Layout/MutationName.text = "Nothing"
@@ -86,6 +87,7 @@ func add_passive():
 	if choice != null:
 		player.add_passive(choice)
 		$MutationDisplay/Layout/MutationName.text = choice.get_name()
+		$MutationDisplay/Layout/MutationDescription.text = choice.get_description()
 		$MutationDisplay/Layout/MutationBinding.text = ""
 	else:
 		$MutationDisplay/Layout/MutationName.text = "Nothing"
