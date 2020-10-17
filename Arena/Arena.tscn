@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Arena/Arena.gd" type="Script" id=2]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -23,6 +24,5 @@ end_cap_mode = 2
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Nav"]
 navpoly = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 0.5, 0.5 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -48, -48 )

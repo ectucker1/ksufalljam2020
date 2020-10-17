@@ -5,7 +5,7 @@ enum Type {  # placeholder enemy types
 }
 
 export(Type) var type = Type.NONE
-var speed := 100
+var speed := 50
 
 var arena : Node2D
 var nav : Navigation2D
@@ -24,15 +24,15 @@ func _physics_process(delta):
 func follow_player(delta):
 	if !nav: return
 	
-	# TODO: get actual player position
-	var player_pos = arena.get_local_mouse_position()
+	var player = get_tree().get_nodes_in_group("players")[0]
 	
-	var path = nav.get_simple_path(position, player_pos)
+	var path = nav.get_simple_path(position, player.position)
 	
 	var collision : KinematicCollision2D
 	var distance_walk = speed * delta
 	
 	while distance_walk > 0 and path.size() > 0:
+		# determine distance to next point
 		var distance_point = position.distance_to(path[0])
 		
 		if distance_walk < distance_point:
