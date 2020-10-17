@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Arena/Arena.gd" type="Script" id=2]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( -128, -128, 128, -128, 128, 128, -128, 128 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -128, -128, 128, -128, 128, 128, -128, 128 ) ]
+
+[node name="Arena" type="TileMap"]
+format = 1
+script = ExtResource( 2 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -128, -128, 128, -128, 128, 128, -128, 128, -128, -128 )
+default_color = Color( 0.4, 0.501961, 1, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Nav" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Nav"]
+navpoly = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
