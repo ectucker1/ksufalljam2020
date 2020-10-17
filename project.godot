@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Mutation",
+"class": "GrayscaleMutation",
+"language": "GDScript",
+"path": "res://player/mutations/grayscale.gd"
+}, {
 "base": "Reference",
 "class": "Mutation",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://player/mutations/speed_up.gd"
 } ]
 _global_script_class_icons={
+"GrayscaleMutation": "",
 "Mutation": "",
 "Player": "",
 "PlayerStatus": "",
@@ -41,6 +47,10 @@ _global_script_class_icons={
 config/name="Ksufalljam 2020"
 run/main_scene="res://level/test_level.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalEffects="*res://effects/GlobalEffects.tscn"
 
 [display]
 
