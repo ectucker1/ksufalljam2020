@@ -123,7 +123,7 @@ GlobalConsts="*res://global_consts.gd"
 
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [input]
 

@@ -42,7 +42,9 @@ rotation = -1.94462e-06
 rotate = false
 
 [node name="WheelLayer" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="Wheel" parent="WheelLayer" instance=ExtResource( 3 )]
 visible = false
+player_path = NodePath("../../Player")
 [connection signal="visibility_changed" from="WheelLayer/Wheel" to="." method="_on_Wheel_visibility_changed"]

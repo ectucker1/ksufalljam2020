@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://wheel/wheel.png" type="Texture" id=1]
 [ext_resource path="res://wheel/arrow.png" type="Texture" id=2]
@@ -117,7 +117,62 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "hide_mutation"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MutationDisplay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MutationDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "show_mutation"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MutationDisplay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MutationDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="WheelScreen" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="Background" type="Polygon2D" parent="."]
@@ -208,7 +263,6 @@ margin_left = 23.5
 margin_top = -11.5
 margin_right = 62.5
 margin_bottom = 11.5
-disabled = true
 text = "Spin"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,9 +271,70 @@ __meta__ = {
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/appear = SubResource( 9 )
 anims/disappear = SubResource( 10 )
+anims/hide_mutation = SubResource( 12 )
+anims/show_mutation = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
+
+[node name="MutationDisplay" type="CenterContainer" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Layout" type="VBoxContainer" parent="MutationDisplay"]
+margin_left = 433.0
+margin_top = 263.0
+margin_right = 591.0
+margin_bottom = 337.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MutationName" type="Label" parent="MutationDisplay/Layout"]
+margin_right = 158.0
+margin_bottom = 14.0
+text = "Mutation Name"
+align = 1
+
+[node name="MutationDescription" type="Label" parent="MutationDisplay/Layout"]
+margin_top = 18.0
+margin_right = 158.0
+margin_bottom = 32.0
+text = "Description"
+align = 1
+
+[node name="MutationBinding" type="Label" parent="MutationDisplay/Layout"]
+margin_top = 36.0
+margin_right = 158.0
+margin_bottom = 50.0
+text = "Bound to M1"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="MutationDisplay/Layout"]
+margin_top = 54.0
+margin_right = 158.0
+margin_bottom = 74.0
+columns = 2
+
+[node name="AgainButton" type="Button" parent="MutationDisplay/Layout/GridContainer"]
+margin_right = 78.0
+margin_bottom = 20.0
+text = "Spin Again"
+
+[node name="StartButton" type="Button" parent="MutationDisplay/Layout/GridContainer"]
+margin_left = 82.0
+margin_right = 158.0
+margin_bottom = 20.0
+text = "Start Fight"
 [connection signal="gauge_released" from="Gauge" to="." method="_on_Gauge_gauge_released"]
 [connection signal="button_down" from="Gauge/Button" to="Gauge" method="_on_Button_button_down"]
 [connection signal="button_up" from="Gauge/Button" to="Gauge" method="_on_Button_button_up"]
+[connection signal="pressed" from="MutationDisplay/Layout/GridContainer/AgainButton" to="." method="_on_AgainButton_pressed"]
+[connection signal="pressed" from="MutationDisplay/Layout/GridContainer/StartButton" to="." method="_on_StartButton_pressed"]
