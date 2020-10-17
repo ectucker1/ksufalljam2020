@@ -28,7 +28,10 @@ signal damage_dealt(amount)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("players")
+	status.player = self
+	
 	set_primary_active(BasicAttackMutation.new())
+	add_passive(VampirismMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

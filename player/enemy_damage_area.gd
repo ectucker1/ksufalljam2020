@@ -8,5 +8,8 @@ func _ready():
 
 func on_body_entered(body):
 	if body.is_in_group("enemies"):
-		# TODO Actually damage enemy
-		pass
+		# Hurt the enemy
+		body.take_damage(damage)
+		# Alert listeners that player did damage
+		for player in get_tree().get_nodes_in_group("players"):
+			player.emit_signal("damage_dealt", damage)
