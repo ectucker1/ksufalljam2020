@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "SpeedUpMutation",
 "language": "GDScript",
 "path": "res://player/mutations/speed_up.gd"
+}, {
+"base": "Mutation",
+"class": "SpiderEyesMutation",
+"language": "GDScript",
+"path": "res://player/mutations/spider_eyes.gd"
 } ]
 _global_script_class_icons={
 "GrayscaleMutation": "",
 "Mutation": "",
 "Player": "",
 "PlayerStatus": "",
-"SpeedUpMutation": ""
+"SpeedUpMutation": "",
+"SpiderEyesMutation": ""
 }
 
 [application]
