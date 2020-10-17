@@ -57,6 +57,8 @@ z_index = -5
 texture = ExtResource( 6 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 31
 
 [node name="walls_front" type="Sprite" parent="Walls"]
 position = Vector2( 0, 16 )
