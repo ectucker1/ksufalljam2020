@@ -15,6 +15,8 @@ var taken_damage_mult := 1.0
 
 var dealt_damage_mult := 1.0
 
+var screenshake_mult := 1.0
+
 
 func set_health(value):
 	var result = clamp(value, 0, 100)

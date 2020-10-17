@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://player/mutations/horns.gd"
 }, {
+"base": "Mutation",
+"class": "LowerDamageMutation",
+"language": "GDScript",
+"path": "res://player/mutations/lower_damage.gd"
+}, {
 "base": "Reference",
 "class": "Mutation",
 "language": "GDScript",
@@ -65,9 +70,19 @@ _global_script_classes=[ {
 "path": "res://player/mutations/spit.gd"
 }, {
 "base": "Mutation",
+"class": "ThinNeckMutation",
+"language": "GDScript",
+"path": "res://player/mutations/thin_neck.gd"
+}, {
+"base": "Mutation",
 "class": "VampirismMutation",
 "language": "GDScript",
 "path": "res://player/mutations/vampirism.gd"
+}, {
+"base": "Mutation",
+"class": "WarpDriveMutation",
+"language": "GDScript",
+"path": "res://player/mutations/warp_drive.gd"
 }, {
 "base": "Mutation",
 "class": "WeakBonesMutation",
@@ -79,6 +94,7 @@ _global_script_class_icons={
 "FireMutation": "",
 "GrayscaleMutation": "",
 "HornsMutation": "",
+"LowerDamageMutation": "",
 "Mutation": "",
 "Player": "",
 "PlayerStatus": "",
@@ -86,7 +102,9 @@ _global_script_class_icons={
 "SpeedUpMutation": "",
 "SpiderEyesMutation": "",
 "SpitMutation": "",
+"ThinNeckMutation": "",
 "VampirismMutation": "",
+"WarpDriveMutation": "",
 "WeakBonesMutation": ""
 }
 
