@@ -8,14 +8,32 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Mutation",
+"language": "GDScript",
+"path": "res://player/mutations/mutation.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player/player.gd"
+}, {
+"base": "Node",
+"class": "PlayerStatus",
+"language": "GDScript",
+"path": "res://player/status.gd"
+} ]
 _global_script_class_icons={
-
+"Mutation": "",
+"Player": "",
+"PlayerStatus": ""
 }
 
 [application]
 
 config/name="Ksufalljam 2020"
+run/main_scene="res://level/test_level.tscn"
 config/icon="res://icon.png"
 
 [rendering]
