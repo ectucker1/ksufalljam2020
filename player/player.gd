@@ -34,7 +34,7 @@ func _ready():
 	connect("hurt", self, "hurt_anim")
 	
 	#set_primary_active(SpitMutation.new())
-	set_secondary_active(WarpDriveMutation.new())
+	set_secondary_active(FireMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

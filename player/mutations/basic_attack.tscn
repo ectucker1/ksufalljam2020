@@ -39,6 +39,8 @@ tracks/1/keys = {
 [node name="HitBox" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
+collision_layer = 8
+collision_mask = 12
 script = ExtResource( 1 )
 damage = 5
 knockback_magnitude = 20.0
