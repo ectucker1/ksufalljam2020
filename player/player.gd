@@ -6,6 +6,7 @@ extends KinematicBody2D
 const BASE_ACC := 128.0
 const BASE_MAX_SPEED := 64.0
 const STOPPING_FRICTION := 256.0
+const TANK_ROT_SPEED := 0.05
 
 # Holds the player's health and other status effects
 var status := PlayerStatus.new()
@@ -70,9 +71,16 @@ func _physics_process(delta):
 	
 	# Apply acceleration if we're holding a direction
 	if input_dir != Vector2.ZERO:
-		velocity += BASE_ACC * status.acc_mult * input_dir * delta
+		# Normal movement mode
+		if not status.tank_drive:
+			velocity += BASE_ACC * status.acc_mult * input_dir * delta
+		# Tank drive
+		else:
+			$Treads.rotate(input_dir.x * TANK_ROT_SPEED)
+			velocity += Vector2(cos($Treads.rotation), sin($Treads.rotation)) * BASE_ACC * status.acc_mult * delta * -input_dir.y
+		# Clamp to max velocity
 		if velocity.length() > BASE_MAX_SPEED * status.max_speed_mult:
-			velocity = velocity.normalized() * BASE_MAX_SPEED * status.max_speed_mult
+				velocity = velocity.normalized() * BASE_MAX_SPEED * status.max_speed_mult
 	else:
 		velocity = velocity.normalized() * clamp(velocity.length() - STOPPING_FRICTION * delta, 0.0, INF)
 	
@@ -105,6 +113,9 @@ func get_facing():
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	input_dir = input_dir.normalized()
+	
+	if status.tank_drive:
+		input_dir = Vector2(cos($Treads.rotation), sin($Treads.rotation))
 	
 	if abs(input_dir.x) >= abs(input_dir.y):
 		if input_dir.x >= 0:

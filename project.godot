@@ -88,6 +88,11 @@ _global_script_classes=[ {
 "class": "WeakBonesMutation",
 "language": "GDScript",
 "path": "res://player/mutations/weak_bones.gd"
+}, {
+"base": "Mutation",
+"class": "WheelsMutation",
+"language": "GDScript",
+"path": "res://player/mutations/wheels.gd"
 } ]
 _global_script_class_icons={
 "BasicAttackMutation": "",
@@ -105,7 +110,8 @@ _global_script_class_icons={
 "ThinNeckMutation": "",
 "VampirismMutation": "",
 "WarpDriveMutation": "",
-"WeakBonesMutation": ""
+"WeakBonesMutation": "",
+"WheelsMutation": ""
 }
 
 [application]

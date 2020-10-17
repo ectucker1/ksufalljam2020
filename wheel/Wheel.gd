@@ -27,6 +27,7 @@ func _ready():
 	available_passives.append(ThinNeckMutation.new())
 	available_passives.append(VampirismMutation.new())
 	available_passives.append(WeakBonesMutation.new())
+	available_passives.append(WheelsMutation.new())
 	
 	available_actives.append(HornsMutation.new())
 	available_actives.append(SpitMutation.new())
