@@ -1,5 +1,10 @@
 extends TileMap
 
+enum EnemyType {
+	LION_BEAR,
+	BEE_SCORPION
+}
+
 onready var enemy_scene := preload("res://Enemy/Enemy.tscn")
 
 
@@ -9,15 +14,17 @@ func _ready():
 
 
 func start_wave(num_enemies = 3):
-	for i in range(3):
-		spawn_enemy()
+	for i in range(num_enemies):
+		spawn_enemy(randi() % EnemyType.size(), i * .5)
 
 
-func spawn_enemy():
+func spawn_enemy(enemy_type, delay = 0):
 	# spawn an enemy on a random point in the enemy spawn path
 	var enemy = enemy_scene.instance()
 	$EnemySpawnPath/PathFollow2D.unit_offset = randf()
 	enemy.position = $EnemySpawnPath/PathFollow2D.position
+	enemy.enemy_type = enemy_type
+	enemy.get_node("SpawnDelay").wait_time = delay
 	add_child(enemy)
 
 
