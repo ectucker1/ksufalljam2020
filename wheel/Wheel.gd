@@ -32,6 +32,7 @@ func _ready():
 	available_actives.append(HornsMutation.new())
 	available_actives.append(SpitMutation.new())
 	available_actives.append(WarpDriveMutation.new())
+	available_actives.append(GroundPoundMutation.new())
 
 
 func _physics_process(delta):

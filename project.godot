@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://player/mutations/grayscale.gd"
 }, {
 "base": "Mutation",
+"class": "GroundPoundMutation",
+"language": "GDScript",
+"path": "res://player/mutations/ground_pound.gd"
+}, {
+"base": "Mutation",
 "class": "HornsMutation",
 "language": "GDScript",
 "path": "res://player/mutations/horns.gd"
@@ -98,6 +103,7 @@ _global_script_class_icons={
 "BasicAttackMutation": "",
 "FireMutation": "",
 "GrayscaleMutation": "",
+"GroundPoundMutation": "",
 "HornsMutation": "",
 "LowerDamageMutation": "",
 "Mutation": "",

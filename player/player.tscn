@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/walkcycles.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://player/mutations/basic_attack.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/shake_camera.gd" type="Script" id=5]
 [ext_resource path="res://player/mutations/treads.png" type="Texture" id=6]
+[ext_resource path="res://player/mutations/groundpound.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -27,6 +28,50 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 19.967
+
+[sub_resource type="Animation" id=13]
+resource_name = "Attack"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -140,7 +185,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 9
+frame = 10
 __meta__ = {
 "_edit_lock_": true
 }
@@ -150,7 +195,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 6
+frame = 7
 __meta__ = {
 "_edit_lock_": true
 }
@@ -160,7 +205,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 3
+frame = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -170,6 +215,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
+frame = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -194,6 +240,27 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/ChargeArea"]
 anims/Attack = SubResource( 3 )
+
+[node name="GroundPound" type="Area2D" parent="Attacks"]
+position = Vector2( 0, 6 )
+monitoring = false
+collision_layer = 8
+collision_mask = 12
+script = ExtResource( 3 )
+damage = 10
+knockback_magnitude = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/GroundPound"]
+shape = SubResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="Attacks/GroundPound"]
+visible = false
+texture = ExtResource( 7 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/GroundPound"]
+anims/Attack = SubResource( 13 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
