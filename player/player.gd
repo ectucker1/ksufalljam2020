@@ -17,7 +17,7 @@ var passives := []
 
 # Phyiscs properties
 var velocity := Vector2.ZERO
-
+var velocity_override := Vector2.ZERO
 
 # Signals emitted when various events happen
 # These are neccessary for mutations to work
@@ -30,7 +30,7 @@ func _ready():
 	add_to_group("players")
 	status.player = self
 	
-	set_primary_active(BasicAttackMutation.new())
+	set_primary_active(HornsMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -58,8 +58,7 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.normalized() * clamp(velocity.length() - STOPPING_FRICTION * delta, 0.0, INF)
 	
-	# Actually apply movement and update velocity if we hit something
-	velocity = move_and_slide(velocity, Vector2.ZERO)
+	velocity_override = Vector2.ZERO
 	
 	# Call phyiscs processing method on each mutation
 	if primary_active != null:
@@ -68,6 +67,12 @@ func _physics_process(delta):
 		secondary_active.physics_process(delta)
 	for passive in passives:
 		passive.physics_process(delta)
+	
+	if velocity_override != Vector2.ZERO:
+		velocity = velocity_override
+	
+	# Actually apply movement and update velocity if we hit something
+	velocity = move_and_slide(velocity, Vector2.ZERO)
 	
 	# If active keys are held, call their use
 	if Input.is_action_pressed("attack_primary"):
