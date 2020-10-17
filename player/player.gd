@@ -34,7 +34,7 @@ func _ready():
 	connect("hurt", self, "hurt_anim")
 	
 	set_primary_active(BasicAttackMutation.new())
-	set_secondary_active(SpitMutation.new())
+	set_secondary_active(BasicAttackMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -127,14 +127,14 @@ func connect_mutation(mutation):
 # When an active is set, connect relevant signals to it
 func set_primary_active(mutation):
 	if primary_active != null:
-		primary_active.on_detached()
+		primary_active.on_removed()
 	connect_mutation(mutation)
 	primary_active = mutation
 
 # When an active is set, connect relevant signals to it
 func set_secondary_active(mutation):
 	if secondary_active != null:
-		secondary_active.on_detached()
+		secondary_active.on_removed()
 	connect_mutation(mutation)
 	secondary_active = mutation
 
