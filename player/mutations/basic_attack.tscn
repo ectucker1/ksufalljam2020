@@ -1,14 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player/enemy_damage_area.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://player/mutations/slash.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 10 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attack"
-length = 0.5
+length = 0.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("HitBox:monitoring")
 tracks/0/interp = 1
@@ -16,7 +17,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -28,10 +29,22 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitBox/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [node name="BasicAttack" type="Node2D"]
@@ -56,8 +69,9 @@ __meta__ = {
 visible = false
 position = Vector2( 11, 0 )
 rotation = 1.5708
-scale = Vector2( 0.2, 0.07 )
 texture = ExtResource( 2 )
+hframes = 4
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 2 )

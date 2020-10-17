@@ -11,6 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	position += velocity * delta
+	look_at(position + velocity)
 
 func on_body_entered(body):
 	if body.is_in_group("enemies"):
