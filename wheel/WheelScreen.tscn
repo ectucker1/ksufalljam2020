@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://wheel/wheel.png" type="Texture" id=1]
 [ext_resource path="res://wheel/arrow.png" type="Texture" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://wheel/gauge.png" type="Texture" id=4]
 [ext_resource path="res://wheel/gauge_mask.png" type="Texture" id=5]
 [ext_resource path="res://wheel/Gauge.gd" type="Script" id=6]
+[ext_resource path="res://ui/m6size1.tres" type="DynamicFont" id=7]
+[ext_resource path="res://ui/m6size4.tres" type="DynamicFont" id=12]
+[ext_resource path="res://ui/ButtonStyleHover2.tres" type="StyleBox" id=13]
+[ext_resource path="res://ui/ButtonStylePressed2.tres" type="StyleBox" id=14]
+[ext_resource path="res://ui/ButtonStyleDisabled2.tres" type="StyleBox" id=15]
+[ext_resource path="res://ui/ButtonStyleBase2.tres" type="StyleBox" id=16]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 0.0298462, -194.813 )
@@ -38,6 +44,44 @@ b = Vector2( -136.521, 136.726 )
 [sub_resource type="SegmentShape2D" id=8]
 a = Vector2( -136.726, -136.521 )
 b = Vector2( 0.0298462, -194.813 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.729412, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.415686, 0.568627, 0.568627, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.486275, 0.447059, 0.447059, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="Animation" id=9]
 resource_name = "appear"
@@ -117,7 +161,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 resource_name = "hide_mutation"
 tracks/0/type = "value"
 tracks/0/path = NodePath("MutationDisplay:modulate")
@@ -144,7 +188,8 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
+resource_name = "show_mutation"
 tracks/0/type = "value"
 tracks/0/path = NodePath("MutationDisplay:modulate")
 tracks/0/interp = 1
@@ -169,6 +214,14 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
 
 [node name="WheelScreen" type="Node2D"]
 pause_mode = 2
@@ -247,8 +300,7 @@ texture = ExtResource( 4 )
 [node name="LineMask" type="Light2D" parent="Gauge"]
 texture = ExtResource( 5 )
 mode = 3
-range_layer_min = 10
-range_layer_max = 10
+range_layer_max = 1
 range_item_cull_mask = 1024
 
 [node name="LineMeter" type="Line2D" parent="Gauge"]
@@ -263,6 +315,18 @@ margin_left = 23.5
 margin_top = -11.5
 margin_right = 62.5
 margin_bottom = 11.5
+focus_mode = 0
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
 text = "Spin"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,70 +335,101 @@ __meta__ = {
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/appear = SubResource( 9 )
 anims/disappear = SubResource( 10 )
-anims/hide_mutation = SubResource( 11 )
-anims/show_mutation = SubResource( 12 )
+anims/hide_mutation = SubResource( 12 )
+anims/show_mutation = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
 
 [node name="MutationDisplay" type="CenterContainer" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -0.333344
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 599.667
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Layout" type="VBoxContainer" parent="MutationDisplay"]
-margin_left = 433.0
-margin_top = 263.0
-margin_right = 591.0
-margin_bottom = 337.0
+margin_left = 232.0
+margin_top = 237.0
+margin_right = 792.0
+margin_bottom = 363.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MutationName" type="Label" parent="MutationDisplay/Layout"]
-margin_right = 158.0
+margin_right = 560.0
 margin_bottom = 14.0
+custom_fonts/font = ExtResource( 12 )
 text = "Mutation Name"
 align = 1
 
 [node name="MutationDescription" type="Label" parent="MutationDisplay/Layout"]
 margin_top = 18.0
-margin_right = 158.0
+margin_right = 560.0
 margin_bottom = 32.0
+custom_fonts/font = ExtResource( 12 )
 text = "Description"
 align = 1
 
 [node name="MutationBinding" type="Label" parent="MutationDisplay/Layout"]
 margin_top = 36.0
-margin_right = 158.0
+margin_right = 560.0
 margin_bottom = 50.0
+custom_fonts/font = ExtResource( 12 )
 text = "Bound to M1"
 align = 1
 
-[node name="GridContainer" type="GridContainer" parent="MutationDisplay/Layout"]
+[node name="CenterContainer" type="CenterContainer" parent="MutationDisplay/Layout"]
 margin_top = 54.0
-margin_right = 158.0
-margin_bottom = 74.0
+margin_right = 560.0
+margin_bottom = 126.0
+
+[node name="GridContainer" type="GridContainer" parent="MutationDisplay/Layout/CenterContainer"]
+margin_right = 560.0
+margin_bottom = 72.0
 columns = 2
 
-[node name="AgainButton" type="Button" parent="MutationDisplay/Layout/GridContainer"]
-margin_right = 78.0
-margin_bottom = 20.0
+[node name="AgainButton" type="Button" parent="MutationDisplay/Layout/CenterContainer/GridContainer"]
+margin_right = 256.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 256, 72 )
+focus_mode = 0
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/disabled = ExtResource( 15 )
+custom_styles/normal = ExtResource( 16 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
 text = "Spin Again"
 
-[node name="StartButton" type="Button" parent="MutationDisplay/Layout/GridContainer"]
-margin_left = 82.0
-margin_right = 158.0
-margin_bottom = 20.0
+[node name="StartButton" type="Button" parent="MutationDisplay/Layout/CenterContainer/GridContainer"]
+margin_left = 260.0
+margin_right = 560.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 300, 0 )
+focus_mode = 0
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 16 )
+custom_styles/disabled = ExtResource( 15 )
+custom_styles/normal = ExtResource( 16 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
 text = "Start Fight"
 [connection signal="gauge_released" from="Gauge" to="." method="_on_Gauge_gauge_released"]
 [connection signal="button_down" from="Gauge/Button" to="Gauge" method="_on_Button_button_down"]
 [connection signal="button_up" from="Gauge/Button" to="Gauge" method="_on_Button_button_up"]
-[connection signal="pressed" from="MutationDisplay/Layout/GridContainer/AgainButton" to="." method="_on_AgainButton_pressed"]
-[connection signal="pressed" from="MutationDisplay/Layout/GridContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MutationDisplay/Layout/CenterContainer/GridContainer/AgainButton" to="." method="_on_AgainButton_pressed"]
+[connection signal="pressed" from="MutationDisplay/Layout/CenterContainer/GridContainer/StartButton" to="." method="_on_StartButton_pressed"]
