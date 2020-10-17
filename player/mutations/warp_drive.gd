@@ -4,10 +4,10 @@ extends Mutation
 
 const COOLDOWN := 1.4
 
-const MIN_X := -128.0
-const MAX_X := 128.0
-const MIN_Y := -128.0
-const MAX_Y := 128.0
+const MIN_X := -200.0
+const MAX_X := 200.0
+const MIN_Y := -200.0
+const MAX_Y := 200.0
 
 var timeout := 0.0
 
