@@ -7,6 +7,9 @@ enum Type {  # placeholder enemy types
 var type = Type.NONE
 var speed := 50
 
+var knockback_velocity := Vector2()
+var knockback_damp := 60
+
 var melee_distance := 25
 var melee_attack := 10
 
@@ -26,8 +29,16 @@ func _ready():
 
 
 func _physics_process(delta):
-	player = get_tree().get_nodes_in_group("players")[0]
-	follow_player(delta)
+	if knockback_velocity != Vector2.ZERO:
+		move_and_slide(knockback_velocity)
+		knockback_velocity = knockback_velocity.clamped(
+				knockback_velocity.length() - knockback_damp * delta)
+		if knockback_velocity.length() < 5:
+			knockback_velocity = Vector2.ZERO
+	
+	else:
+		player = get_tree().get_nodes_in_group("players")[0]
+		follow_player(delta)
 
 
 func follow_player(delta):
