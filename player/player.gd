@@ -29,9 +29,12 @@ signal damage_dealt(amount)
 func _ready():
 	add_to_group("players")
 	status.player = self
+	GlobalConsts.player = self
+	
 	connect("hurt", self, "hurt_anim")
 	
-	add_passive(FireMutation.new())
+	set_primary_active(BasicAttackMutation.new())
+	add_passive(SharpTeethMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
