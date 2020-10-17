@@ -7,7 +7,6 @@ const BASE_ACC := 128.0
 const BASE_MAX_SPEED := 64.0
 const STOPPING_FRICTION := 256.0
 
-
 # Holds the player's health and other status effects
 var status := PlayerStatus.new()
 
@@ -29,6 +28,7 @@ signal damage_dealt(amount)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("players")
+	set_primary_active(BasicAttackMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -66,12 +66,37 @@ func _physics_process(delta):
 		secondary_active.physics_process(delta)
 	for passive in passives:
 		passive.physics_process(delta)
+	
+	# If active keys are held, call their use
+	if Input.is_action_pressed("attack_primary"):
+		if primary_active != null:
+			primary_active.on_used()
+	if Input.is_action_pressed("attack_secondary"):
+		if secondary_active != null:
+			secondary_active.on_used()
+
+func get_facing():
+	var input_dir = Vector2.ZERO
+	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	input_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	input_dir = input_dir.normalized()
+	
+	if abs(input_dir.x) >= abs(input_dir.y):
+		if input_dir.x >= 0:
+			return GlobalConsts.DIR_RIGHT
+		else:
+			return GlobalConsts.DIR_LEFT
+	else:
+		if input_dir.y <= 0:
+			return GlobalConsts.DIR_UP
+		else:
+			return GlobalConsts.DIR_DOWN
 
 # Connect relevant signals to the given mutation
 func connect_mutation(mutation):
 	mutation.player = self
-	connect("hurt", primary_active, "on_hurt")
-	connect("damage_dealt", primary_active, "on_damage_dealt")
+	connect("hurt", mutation, "on_hurt")
+	connect("damage_dealt", mutation, "on_damage_dealt")
 	mutation.on_attached()
 
 # When an active is set, connect relevant signals to it

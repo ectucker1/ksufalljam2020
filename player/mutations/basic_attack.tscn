@@ -1,0 +1,211 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://player/enemy_damage_area.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 3 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 3, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 3 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "AttackDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("DownBox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DownBox/Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "AttackLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftBox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftBox/Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "AttackRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftBox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightBox/Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "AttackUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("UpBox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UpBox/Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="BasicAttack" type="Node2D"]
+
+[node name="UpBox" type="Area2D" parent="."]
+position = Vector2( 0, -11 )
+monitoring = false
+monitorable = false
+script = ExtResource( 1 )
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpBox"]
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="UpBox"]
+visible = false
+scale = Vector2( 0.2, 0.07 )
+texture = ExtResource( 2 )
+
+[node name="LeftBox" type="Area2D" parent="."]
+position = Vector2( -11, 0 )
+monitoring = false
+monitorable = false
+script = ExtResource( 1 )
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBox"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="LeftBox"]
+visible = false
+rotation = -1.5708
+scale = Vector2( 0.2, 0.07 )
+texture = ExtResource( 2 )
+
+[node name="RightBox" type="Area2D" parent="."]
+position = Vector2( 11, 0 )
+monitoring = false
+monitorable = false
+script = ExtResource( 1 )
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBox"]
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="RightBox"]
+visible = false
+rotation = 1.5708
+scale = Vector2( 0.2, 0.07 )
+texture = ExtResource( 2 )
+
+[node name="DownBox" type="Area2D" parent="."]
+position = Vector2( 0, 11 )
+monitoring = false
+monitorable = false
+script = ExtResource( 1 )
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownBox"]
+shape = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="DownBox"]
+visible = false
+rotation = 3.14159
+scale = Vector2( 0.2, 0.07 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/AttackDown = SubResource( 7 )
+anims/AttackLeft = SubResource( 8 )
+anims/AttackRight = SubResource( 9 )
+anims/AttackUp = SubResource( 6 )
