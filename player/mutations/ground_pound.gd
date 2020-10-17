@@ -11,7 +11,7 @@ func get_name():
 	return "Monkey Fists"
 
 func get_description():
-	return "Pound the ground to deal 10 damage to nearby enemies"
+	return "Pound the ground for 10 AOE damage"
 
 func physics_process(delta):
 	timeout -= delta

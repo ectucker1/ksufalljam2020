@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Arena/Arena.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Arena/tilemaps/walls_front.png" type="Texture" id=4]
 [ext_resource path="res://Arena/tilemaps/walls.png" type="Texture" id=5]
 [ext_resource path="res://Arena/tilemaps/ground.png" type="Texture" id=6]
+[ext_resource path="res://ui/hud/hud.tscn" type="PackedScene" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -208, -208, 208, -208, 208, 208, -208, 208 )
@@ -45,6 +46,8 @@ position = Vector2( -168, -168 )
 rotation = -1.94462e-06
 rotate = false
 
+[node name="HudLayer" parent="." instance=ExtResource( 7 )]
+
 [node name="WheelLayer" type="CanvasLayer" parent="."]
 layer = 10
 
@@ -53,21 +56,16 @@ visible = false
 player_path = NodePath("../../Player")
 
 [node name="Ground" type="Sprite" parent="."]
-z_index = -5
 texture = ExtResource( 6 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
-collision_layer = 32
-collision_mask = 31
 
 [node name="walls_front" type="Sprite" parent="Walls"]
 position = Vector2( 0, 16 )
-z_index = 5
 texture = ExtResource( 4 )
 
 [node name="walls" type="Sprite" parent="Walls"]
 position = Vector2( 0, 56 )
-z_index = -5
 texture = ExtResource( 5 )
 
 [node name="CollisionTop" type="CollisionShape2D" parent="Walls"]

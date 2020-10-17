@@ -185,7 +185,7 @@ z_index = 2
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 10
+frame = 11
 __meta__ = {
 "_edit_lock_": true
 }
@@ -195,7 +195,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 7
+frame = 8
 __meta__ = {
 "_edit_lock_": true
 }
@@ -205,7 +205,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 4
+frame = 5
 __meta__ = {
 "_edit_lock_": true
 }
@@ -215,7 +215,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 1
+frame = 2
 __meta__ = {
 "_edit_lock_": true
 }
