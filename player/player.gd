@@ -29,6 +29,7 @@ signal damage_dealt(amount)
 func _ready():
 	add_to_group("players")
 	status.player = self
+	connect("hurt", self, "hurt_anim")
 	
 	add_passive(FireMutation.new())
 
@@ -124,3 +125,10 @@ func set_secondary_active(mutation):
 func add_passive(mutation):
 	connect_mutation(mutation)
 	passives.append(mutation)
+
+func hurt_anim(amount):
+	$AnimationTree["parameters/HurtShot/active"] = true
+	if GlobalEffects.trauma < 0.3:
+		GlobalEffects.trauma += 0.4
+	elif GlobalEffects.trauma < 0.4:
+		GlobalEffects.trauma = 0.4

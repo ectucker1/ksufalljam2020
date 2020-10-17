@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://player/enemy_damage_area.gd" type="Script" id=3]
 [ext_resource path="res://player/mutations/basic_attack.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/shake_camera.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -27,6 +28,41 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Hurt"
+
+[sub_resource type="AnimationNodeOneShot" id=6]
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+
+[sub_resource type="AnimationNodeBlendTree" id=7]
+graph_offset = Vector2( -652.145, 101.333 )
+nodes/Animation/node = SubResource( 5 )
+nodes/Animation/position = Vector2( -186.667, 253.333 )
+nodes/HurtShot/node = SubResource( 6 )
+nodes/HurtShot/position = Vector2( 66.6667, 120 )
+nodes/States/node = SubResource( 8 )
+nodes/States/position = Vector2( -200, 106.667 )
+node_connections = [ "output", 0, "HurtShot", "HurtShot", 0, "States", "HurtShot", 1, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -36,7 +72,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Sprites"]
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -62,9 +100,21 @@ shape = SubResource( 2 )
 anims/Attack = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotating = true
 current = true
 zoom = Vector2( 0.3, 0.3 )
 smoothing_enabled = true
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hurt = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/HurtShot/active = false
+parameters/States/playback = SubResource( 9 )
