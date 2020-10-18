@@ -29,3 +29,4 @@ func on_used():
 			player.get_parent().add_child(bullet)
 			bullet.global_position = player.global_position + direction * 8.0
 			bullet.velocity = direction * BULLET_SPEED
+		player.get_node("AudioNeedles").play(0)

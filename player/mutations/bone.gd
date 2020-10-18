@@ -27,3 +27,4 @@ func on_used():
 		player.get_parent().add_child(bullet)
 		bullet.global_position = player.global_position + target_dir * 8.0
 		bullet.velocity = target_dir * BULLET_SPEED
+		bullet.get_node("Audio").play(0)
