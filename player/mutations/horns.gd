@@ -16,6 +16,12 @@ func get_name():
 func get_description():
 	return "Charge at enemies for 10 damage"
 
+func on_attached():
+	player.get_node("Sprites/GoatHorns").visible = true
+
+func on_removed():
+	player.get_node("Sprites/GoatHorns").visible = false
+
 func physics_process(delta):
 	timeout -= delta
 	if timeout > COOLDOWN - SPEED_TIME:

@@ -13,6 +13,12 @@ func get_name():
 func get_description():
 	return "Pound the ground for 10 AOE damage"
 
+func on_attached():
+	player.get_node("Sprites/MonkeyArms").visible = true
+
+func on_removed():
+	player.get_node("Sprites/MonkeyArms").visible = false
+
 func physics_process(delta):
 	timeout -= delta
 
