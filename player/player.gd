@@ -39,7 +39,7 @@ func _ready():
 	connect("hurt", self, "hurt_anim")
 	
 	set_primary_active(BasicAttackMutation.new())
-	set_secondary_active(GroundPoundMutation.new())
+	set_secondary_active(BasicAttackMutation.new())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

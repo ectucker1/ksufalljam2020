@@ -9,9 +9,9 @@ func get_description():
 	return "Move faster"
 
 func on_attached():
-	player.status.max_speed_mult *= 2.0
-	player.status.acc_mult *= 2.0
+	player.status.max_speed_mult *= 1.3
+	player.status.acc_mult *= 1.3
 
 func on_removed():
-	player.status.max_speed_mult /= 2.0
-	player.status.acc_mult /= 2.0
+	player.status.max_speed_mult /= 1.3
+	player.status.acc_mult /= 1.3
