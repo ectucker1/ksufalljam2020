@@ -27,5 +27,3 @@ func on_used():
 		var x = rand_range(MIN_X, MAX_X)
 		var y = rand_range(MIN_Y, MAX_Y)
 		player.global_position = Vector2(x, y)
-		if GlobalEffects.trauma < 0.3:
-			GlobalEffects.trauma = 0.3
