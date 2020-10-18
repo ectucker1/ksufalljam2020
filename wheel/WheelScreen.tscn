@@ -472,6 +472,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioSpin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="AudioTransform" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 [connection signal="gauge_released" from="Gauge" to="." method="_on_Gauge_gauge_released"]
 [connection signal="button_down" from="Gauge/Button" to="Gauge" method="_on_Button_button_down"]
 [connection signal="button_up" from="Gauge/Button" to="Gauge" method="_on_Button_button_up"]
