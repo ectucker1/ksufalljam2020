@@ -13,8 +13,10 @@ func _input(_event):
 func _on_Pause_visibility_changed():
 	if visible:
 		get_tree().paused = true
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -17)
 	else:
 		get_tree().paused = false
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -7)
 
 
 func _on_Continue_pressed():

@@ -8,7 +8,7 @@
 [ext_resource path="res://ui/ButtonStyleDisabled2.tres" type="StyleBox" id=6]
 [ext_resource path="res://ui/pause/Pause.gd" type="Script" id=7]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -16,11 +16,11 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.729412, 1, 1, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -28,7 +28,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.415686, 0.568627, 0.568627, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -36,7 +36,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -44,7 +44,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.486275, 0.447059, 0.447059, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -52,7 +52,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -60,7 +60,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -105,15 +105,17 @@ margin_left = -62.0
 margin_top = -16.0
 margin_right = 62.0
 margin_bottom = 28.0
+focus_mode = 0
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 3 )
-custom_styles/focus = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
 custom_styles/disabled = ExtResource( 6 )
 custom_styles/normal = ExtResource( 4 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -128,15 +130,17 @@ margin_left = -40.0
 margin_top = 36.0
 margin_right = 40.0
 margin_bottom = 80.0
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 6 )
-custom_styles/disabled = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
-custom_fonts/font = SubResource( 9 )
+focus_mode = 0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
