@@ -20,3 +20,7 @@ func fade_out():
 
 func fade_in():
 	$FadeLayer/AnimationPlayer.play("fade_in")
+
+func _input(event):
+	if event.is_action_pressed("dev_fullscreen"):
+		OS.window_fullscreen = not OS.window_fullscreen
