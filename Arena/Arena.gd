@@ -2,6 +2,8 @@ extends Node2D
 
 enum EnemyType { LB, BS, DS, JD }
 
+var wave := 1
+
 onready var enemy_scene := preload("res://Enemy/Enemy.tscn")
 
 
@@ -32,11 +34,13 @@ func show_wheel():
 
 func _on_Wheel_visibility_changed():
 	if !$WheelLayer/Wheel.visible:
-		start_wave(3)
+		start_wave(wave + 2)
 
 
 func on_enemy_died():
 	if get_tree().get_nodes_in_group("enemies").size() == 0:
 		$WheelLayer/Wheel.show_screen()
+		wave += 1
+		$HudLayer/Control/WaveLabel.text = "Wave " + str(wave)
 		if $Player.status.health < 70:
 			$Player.status.health = 70
