@@ -26,3 +26,5 @@ func on_used():
 	if timeout <= 0.0:
 		timeout = COOLDOWN
 		player.get_node("Attacks/GroundPound/AnimationPlayer").play("Attack")
+		if GlobalEffects.trauma <= 0.5:
+			GlobalEffects.trauma = 0.5

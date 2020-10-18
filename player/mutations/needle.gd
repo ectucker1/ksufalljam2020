@@ -30,3 +30,5 @@ func on_used():
 			bullet.global_position = player.global_position + direction * 8.0
 			bullet.velocity = direction * BULLET_SPEED
 		player.get_node("AudioNeedles").play(0)
+		if GlobalEffects.trauma <= 0.3:
+			GlobalEffects.trauma = 0.3

@@ -32,3 +32,5 @@ func on_used():
 		timeout = COOLDOWN
 		target_dir = (player.get_global_mouse_position() - player.global_position).normalized()
 		player.get_node("Attacks/ChargeArea/AnimationPlayer").play("Attack")
+		if GlobalEffects.trauma <= 0.5:
+			GlobalEffects.trauma = 0.5

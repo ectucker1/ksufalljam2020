@@ -28,3 +28,5 @@ func on_used():
 		var y = rand_range(MIN_Y, MAX_Y)
 		player.global_position = Vector2(x, y)
 		player.get_node("AudioWarp").play(0)
+		if GlobalEffects.trauma <= 0.4:
+			GlobalEffects.trauma = 0.4
