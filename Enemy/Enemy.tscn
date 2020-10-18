@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player/mutations/slash.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/BS_SpriteFrames.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://sfx/Player_attack.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/Enemy_hurt.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.94572
@@ -108,6 +109,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioHurt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=7]
@@ -216,6 +231,9 @@ autostart = true
 [node name="AudioMelee" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 pitch_scale = 1.39
+
+[node name="AudioHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="body_entered" from="MeleeArea" to="." method="_on_MeleeArea_body_entered"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="timeout" from="SpawnDelay" to="." method="_on_SpawnDelay_timeout"]
