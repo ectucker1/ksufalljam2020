@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://wheel/wheel.png" type="Texture" id=1]
 [ext_resource path="res://wheel/arrow.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://wheel/gauge_mask.png" type="Texture" id=5]
 [ext_resource path="res://wheel/Gauge.gd" type="Script" id=6]
 [ext_resource path="res://ui/m6size1.tres" type="DynamicFont" id=7]
+[ext_resource path="res://sfx/Wheel_spin.wav" type="AudioStream" id=8]
+[ext_resource path="res://sfx/Player_transformation.wav" type="AudioStream" id=9]
 [ext_resource path="res://ui/m6size4.tres" type="DynamicFont" id=12]
 [ext_resource path="res://ui/ButtonStyleHover2.tres" type="StyleBox" id=13]
 [ext_resource path="res://ui/ButtonStylePressed2.tres" type="StyleBox" id=14]
@@ -198,6 +200,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=17]
+length = 1.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("MutationDisplay:modulate")
 tracks/0/interp = 1
@@ -221,6 +224,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioTransform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="StyleBoxFlat" id=18]
@@ -354,6 +371,7 @@ position = Vector2( 512, 300 )
 
 [node name="MutationDisplay" type="CenterContainer" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.333344
@@ -374,31 +392,31 @@ __meta__ = {
 
 [node name="MutationName" type="Label" parent="MutationDisplay/Layout"]
 margin_right = 560.0
-margin_bottom = 14.0
+margin_bottom = 56.0
 custom_fonts/font = ExtResource( 12 )
 text = "Mutation Name"
 align = 1
 
 [node name="MutationDescription" type="Label" parent="MutationDisplay/Layout"]
-margin_top = 18.0
+margin_top = 60.0
 margin_right = 560.0
-margin_bottom = 32.0
+margin_bottom = 116.0
 custom_fonts/font = ExtResource( 12 )
 text = "Description"
 align = 1
 
 [node name="MutationBinding" type="Label" parent="MutationDisplay/Layout"]
-margin_top = 36.0
+margin_top = 120.0
 margin_right = 560.0
-margin_bottom = 50.0
+margin_bottom = 176.0
 custom_fonts/font = ExtResource( 12 )
 text = "Bound to M1"
 align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MutationDisplay/Layout"]
-margin_top = 54.0
+margin_top = 180.0
 margin_right = 560.0
-margin_bottom = 126.0
+margin_bottom = 252.0
 
 [node name="GridContainer" type="GridContainer" parent="MutationDisplay/Layout/CenterContainer"]
 margin_right = 560.0
@@ -453,6 +471,12 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioSpin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="AudioTransform" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 [connection signal="gauge_released" from="Gauge" to="." method="_on_Gauge_gauge_released"]
 [connection signal="button_down" from="Gauge/Button" to="Gauge" method="_on_Button_button_down"]
 [connection signal="button_up" from="Gauge/Button" to="Gauge" method="_on_Button_button_up"]

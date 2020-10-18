@@ -47,11 +47,13 @@ func _physics_process(delta):
 		else:
 			add_passive()
 		
+		$AudioSpin.stop()
 		$Anim.play("show_mutation")
 
 
 func spin_wheel(speed = 70):
 	$Wheel.angular_velocity = -(speed + randf() * 2)  # randomize slightly
+	$AudioSpin.play(0)
 	spinning = true
 
 
