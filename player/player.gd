@@ -21,11 +21,13 @@ var velocity := Vector2.ZERO
 var velocity_override := Vector2.ZERO
 
 var enabled = false
+var dead = false
 
 # Signals emitted when various events happen
 # These are neccessary for mutations to work
 signal hurt(amount)
 signal damage_dealt(amount)
+signal killed()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,6 +44,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	enabled = not get_parent().get_node("WheelLayer/Wheel").visible
+	if dead:
+		enabled = false
 	
 	if enabled:
 		# Call processing method on each mutation
@@ -166,3 +170,11 @@ func hurt_anim(amount):
 		GlobalEffects.trauma += 0.4
 	elif GlobalEffects.trauma < 0.4:
 		GlobalEffects.trauma = 0.4
+
+func remove_mutations():
+	if primary_active != null:
+		primary_active.on_removed()
+	if secondary_active != null:
+		secondary_active.on_removed()
+	for passive in passives:
+		passive.on_removed()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Arena/Arena.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Arena/tilemaps/ground.png" type="Texture" id=6]
 [ext_resource path="res://ui/hud/hud.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Arena/Pillar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/screens/gameover.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 56, -4, 120, 116, 108, 124, -76, 104, 40, 4, 60, -16, 56, -28, 120, -108, 136, -112, 136, 124, 140, -128, 208, -208, 208, 208, 140, 136, 136, -144, 136, 148, 100, 136, -80, 116, -68, -112, 104, -112, 40, -36, 24, -28, -72, -100, 24, -4, -80, 92, 100, -128, -72, -124, -208, -208, 104, -144, -88, -132, 20, -16, -96, 84, -88, -92, -100, -96, -112, 92, 120, -148, -104, -124, -208, 208, -108, -108, -116, 104, -112, 116, -96, 124, 120, 152, 108, 148 )
@@ -109,4 +110,7 @@ shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -48, -48 )
+
+[node name="GameOver" parent="." instance=ExtResource( 9 )]
+layer = 12
 [connection signal="visibility_changed" from="WheelLayer/Wheel" to="." method="_on_Wheel_visibility_changed"]
