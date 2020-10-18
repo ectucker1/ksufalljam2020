@@ -170,7 +170,7 @@ margin_right = 428.0
 margin_bottom = 160.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-text = "Insert Title Here"
+text = "Radiation Roulette"
 __meta__ = {
 "_edit_use_anchors_": false
 }

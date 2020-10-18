@@ -12,6 +12,7 @@ func _physics_process(delta):
 
 
 func _on_btnStart_pressed():
+	GlobalSounds.get_node("ButtonClick").play()
 	$AnimationPlayer.play("fade_out")
 
 

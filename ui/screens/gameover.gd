@@ -19,6 +19,7 @@ func _on_PlayAgain_pressed():
 	$CenterContainer/VBoxContainer/PlayAgain.disabled = true
 	hide()
 	GlobalEffects.fade_out()
+	GlobalSounds.get_node("ButtonClick").play()
 
 func _on_Quit_pressed():
 	get_tree().quit()

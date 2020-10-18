@@ -73,6 +73,7 @@ func hide_screen():
 	GlobalSounds.get_node("AnimationPlayer").play("to_battle")
 
 func _on_Gauge_gauge_released(amount):
+	GlobalSounds.get_node("ButtonClick").play()
 	spin_wheel((max_speed - min_speed) * amount + min_speed)
 
 func add_active():
@@ -114,9 +115,11 @@ func choose_from(array):
 		return choice
 
 func _on_AgainButton_pressed():
+	GlobalSounds.get_node("ButtonClick").play()
 	$Gauge/Button.disabled = false
 	$Gauge.clear()
 	$Anim.play("hide_mutation")
 
 func _on_StartButton_pressed():
+	GlobalSounds.get_node("ButtonClick").play()
 	hide_screen()

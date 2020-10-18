@@ -140,7 +140,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ksufalljam 2020"
+config/name="Radiation Roulette"
 run/main_scene="res://ui/mainmenu/MainMenu.tscn"
 config/icon="res://icon.png"
 

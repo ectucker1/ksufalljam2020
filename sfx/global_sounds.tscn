@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sfx/Battle_theme.wav" type="AudioStream" id=1]
 [ext_resource path="res://sfx/Spinning_wheel_theme.wav" type="AudioStream" id=2]
+[ext_resource path="res://sfx/UI_input1.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "to_battle"
@@ -68,6 +69,9 @@ bus = "Music"
 [node name="WheelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "Music"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/to_battle = SubResource( 1 )
