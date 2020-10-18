@@ -38,3 +38,5 @@ func _on_Wheel_visibility_changed():
 func on_enemy_died():
 	if get_tree().get_nodes_in_group("enemies").size() == 0:
 		$WheelLayer/Wheel.show_screen()
+		if $Player.status.health < 70:
+			$Player.status.health = 70

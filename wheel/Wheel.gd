@@ -54,6 +54,7 @@ func spin_wheel(speed = 70):
 
 
 func show_screen():
+	$Title.text = "Round Finished: Continue your Mutation"
 	$Gauge.clear()
 	$Anim.play("appear")
 

@@ -41,8 +41,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not enabled and not get_parent().get_node("WheelLayer/Wheel").visible:
-		enabled = true
+	enabled = not get_parent().get_node("WheelLayer/Wheel").visible
 	
 	if enabled:
 		# Call processing method on each mutation
