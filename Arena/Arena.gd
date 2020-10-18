@@ -10,6 +10,9 @@ onready var enemy_scene := preload("res://Enemy/Enemy.tscn")
 func _ready():
 	randomize()
 	show_wheel()
+	
+	if not GlobalSounds.get_node("BattleMusic").playing:
+		GlobalSounds.get_node("BattleMusic").play()
 
 
 func start_wave(num_enemies = 3):

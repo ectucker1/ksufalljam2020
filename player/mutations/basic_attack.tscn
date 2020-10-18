@@ -5,7 +5,7 @@
 [ext_resource path="res://sfx/Player_attack.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 10 )
+extents = Vector2( 4, 12 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attack"
@@ -74,7 +74,7 @@ damage = 5
 knockback_magnitude = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( 11, 0 )
+position = Vector2( 13, 0 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -82,7 +82,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="HitBox"]
 visible = false
-position = Vector2( 11, 0 )
+position = Vector2( 13, 0 )
 rotation = 1.5708
 texture = ExtResource( 2 )
 hframes = 4

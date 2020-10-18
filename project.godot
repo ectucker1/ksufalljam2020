@@ -70,6 +70,11 @@ _global_script_classes=[ {
 "path": "res://player/mutations/teeth.gd"
 }, {
 "base": "Mutation",
+"class": "SlowDownMutation",
+"language": "GDScript",
+"path": "res://player/mutations/slow.gd"
+}, {
+"base": "Mutation",
 "class": "SpeedUpMutation",
 "language": "GDScript",
 "path": "res://player/mutations/speed_up.gd"
@@ -122,6 +127,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerStatus": "",
 "SharpTeethMutation": "",
+"SlowDownMutation": "",
 "SpeedUpMutation": "",
 "SpiderEyesMutation": "",
 "SpitMutation": "",
@@ -142,6 +148,7 @@ config/icon="res://icon.png"
 
 GlobalEffects="*res://effects/GlobalEffects.tscn"
 GlobalConsts="*res://global_consts.gd"
+GlobalSounds="*res://sfx/global_sounds.tscn"
 
 [display]
 
