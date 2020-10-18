@@ -11,7 +11,7 @@ var speed := 50
 var knockback_velocity := Vector2()
 var knockback_damp := 60
 
-var melee_distance := 25
+var melee_distance := 20
 var melee_attack := 10
 
 var projectile_speed := 100
