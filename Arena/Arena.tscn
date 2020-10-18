@@ -78,6 +78,8 @@ position = Vector2( -88, -112 )
 position = Vector2( 120, -128 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 62
 
 [node name="walls_front" type="Sprite" parent="Walls"]
 position = Vector2( 0, 16 )
