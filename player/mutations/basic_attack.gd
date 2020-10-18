@@ -21,5 +21,3 @@ func on_used():
 		timeout = COOLDOWN
 		player.get_node("Attacks/BasicAttack/HitBox").look_at(player.get_global_mouse_position())
 		player.get_node("Attacks/BasicAttack/AnimationPlayer").play("Attack")
-		if GlobalEffects.trauma < 0.3:
-			GlobalEffects.trauma = 0.3
