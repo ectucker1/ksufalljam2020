@@ -165,6 +165,7 @@ func add_passive(mutation):
 	passives.append(mutation)
 
 func hurt_anim(amount):
+	$AudioHurt.play(0)
 	$AnimationTree["parameters/HurtShot/active"] = true
 	if GlobalEffects.trauma < 0.3:
 		GlobalEffects.trauma += 0.4
