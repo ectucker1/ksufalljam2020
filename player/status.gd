@@ -30,9 +30,12 @@ func set_health(value):
 		health = result
 	health = clamp(health, 0, 100)
 	if health == 0:
-		kill()
+		if not player.dead:
+			kill()
 
 func kill():
+	player.emit_signal("killed")
+	player.dead = true
 	player.visible = false
 
 # Reset the values of all status parameters
