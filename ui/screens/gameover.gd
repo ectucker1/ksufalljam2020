@@ -8,6 +8,7 @@ func show():
 	$AnimationPlayer.play("show")
 
 func hide():
+	GlobalSounds.get_node("AnimationPlayer").play("to_wheel")
 	$AnimationPlayer.play("hide")
 
 func restart_game():
