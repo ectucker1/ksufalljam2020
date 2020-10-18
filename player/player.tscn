@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/walkcycles.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://player/shake_camera.gd" type="Script" id=5]
 [ext_resource path="res://player/mutations/treads.png" type="Texture" id=6]
 [ext_resource path="res://player/mutations/groundpound.png" type="Texture" id=7]
+[ext_resource path="res://sfx/Player_hurt.wav" type="AudioStream" id=8]
+[ext_resource path="res://sfx/Player_attack.wav" type="AudioStream" id=9]
+[ext_resource path="res://sfx/Enemy_hurt.wav" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -28,6 +31,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../../AudioAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="CircleShape2D" id=4]
@@ -72,10 +89,24 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/3/type = "audio"
+tracks/3/path = NodePath("../../AudioAttack")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.05 )
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "Hurt"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites/RightSprite:modulate")
 tracks/0/interp = 1
@@ -87,6 +118,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioHurt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=7]
@@ -156,7 +201,7 @@ states/Walk/position = Vector2( 468.333, 91.6667 )
 start_node = "Walk"
 
 [sub_resource type="AnimationNodeBlendTree" id=12]
-graph_offset = Vector2( -652.145, 101.333 )
+graph_offset = Vector2( -507, 55 )
 nodes/Animation/node = SubResource( 8 )
 nodes/Animation/position = Vector2( -186.667, 253.333 )
 nodes/HurtShot/node = SubResource( 9 )
@@ -185,7 +230,7 @@ z_index = 2
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 11
+frame = 10
 __meta__ = {
 "_edit_lock_": true
 }
@@ -195,7 +240,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 8
+frame = 7
 __meta__ = {
 "_edit_lock_": true
 }
@@ -205,7 +250,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 5
+frame = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -215,7 +260,7 @@ visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 2
+frame = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -228,7 +273,6 @@ __meta__ = {
 [node name="BasicAttack" parent="Attacks" instance=ExtResource( 4 )]
 
 [node name="ChargeArea" type="Area2D" parent="Attacks"]
-monitoring = false
 collision_layer = 8
 collision_mask = 12
 script = ExtResource( 3 )
@@ -291,3 +335,9 @@ parameters/States/playback = SubResource( 13 )
 visible = false
 position = Vector2( 0, 6 )
 texture = ExtResource( 6 )
+
+[node name="AudioHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="AudioAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
