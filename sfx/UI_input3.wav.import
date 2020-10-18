@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/UI_input3.wav-1d5df51f171e38a1de847b290cea153c.sample"
+
+[deps]
+
+source_file="res://sfx/UI_input3.wav"
+dest_files=[ "res://.import/UI_input3.wav-1d5df51f171e38a1de847b290cea153c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

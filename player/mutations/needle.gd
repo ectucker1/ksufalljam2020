@@ -14,7 +14,7 @@ func get_name():
 	return "Porcupine Quills"
 
 func get_description():
-	return "Shoot 8 needles for 5 damage each"
+	return "Shoot 8 needles for 2 damage each"
 
 func physics_process(delta):
 	timeout -= delta

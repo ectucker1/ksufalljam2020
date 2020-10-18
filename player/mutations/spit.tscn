@@ -11,7 +11,7 @@ radius = 4.93303
 collision_layer = 8
 collision_mask = 44
 script = ExtResource( 1 )
-damage = 10
+damage = 5
 knockback_magnitude = 20.0
 
 [node name="Shape" type="CollisionShape2D" parent="."]

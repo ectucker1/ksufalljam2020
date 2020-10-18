@@ -2,7 +2,7 @@
 
 [ext_resource path="res://sfx/Battle_theme.wav" type="AudioStream" id=1]
 [ext_resource path="res://sfx/Spinning_wheel_theme.wav" type="AudioStream" id=2]
-[ext_resource path="res://sfx/UI_input1.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/UI_input3.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "to_battle"
@@ -63,11 +63,11 @@ tracks/1/keys = {
 
 [node name="BattleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -80.0
 bus = "Music"
 
 [node name="WheelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -80.0
 bus = "Music"
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]

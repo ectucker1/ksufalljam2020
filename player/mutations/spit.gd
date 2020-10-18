@@ -14,7 +14,7 @@ func get_name():
 	return "Acid Spit"
 
 func get_description():
-	return "Shoot spitballs for 10 damage"
+	return "Shoot spitballs for 5 damage"
 
 func physics_process(delta):
 	timeout -= delta
