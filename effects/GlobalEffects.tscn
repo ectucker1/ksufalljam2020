@@ -149,7 +149,7 @@ nodes/fragment/connections = PoolIntArray( 3, 0, 4, 2, 4, 0, 0, 0, 5, 0, 6, 0, 7
 [sub_resource type="ShaderMaterial" id=11]
 shader = SubResource( 10 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 resource_name = "fade_in"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
@@ -164,8 +164,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -207,6 +206,7 @@ __meta__ = {
 }
 
 [node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 15
 
 [node name="ColorRect" type="ColorRect" parent="FadeLayer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -219,5 +219,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeLayer"]
-anims/fade_in = SubResource( 13 )
-anims/fade_out = SubResource( 12 )
+anims/fade_in = SubResource( 12 )
+anims/fade_out = SubResource( 13 )
