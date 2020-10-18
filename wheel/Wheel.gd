@@ -65,10 +65,12 @@ func show_screen():
 	$Title.text = "Round Finished: Continue your Mutation"
 	$Gauge.clear()
 	$Anim.play("appear")
+	GlobalSounds.get_node("AnimationPlayer").play("to_wheel")
 
 
 func hide_screen():
 	$Anim.play("disappear")
+	GlobalSounds.get_node("AnimationPlayer").play("to_battle")
 
 func _on_Gauge_gauge_released(amount):
 	spin_wheel((max_speed - min_speed) * amount + min_speed)

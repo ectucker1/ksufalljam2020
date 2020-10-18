@@ -13,6 +13,8 @@ func _ready():
 	
 	if not GlobalSounds.get_node("BattleMusic").playing:
 		GlobalSounds.get_node("BattleMusic").play()
+	if not GlobalSounds.get_node("WheelMusic").playing:
+		GlobalSounds.get_node("WheelMusic").play()
 
 
 func start_wave(num_enemies = 3):
