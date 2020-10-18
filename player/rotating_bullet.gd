@@ -23,7 +23,7 @@ func _physics_process(delta):
 	time_since_bounce += delta
 	
 	# Bones have some chance to escape, so free them up
-	if global_position.length_squared() > 20000:
+	if global_position.length_squared() > 2000000:
 		queue_free()
 
 func on_body_entered(body):
