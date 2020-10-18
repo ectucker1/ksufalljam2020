@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ground_pound.wav-caedcc1955e2918315fdbfdf8d4b3411.sample"
+
+[deps]
+
+source_file="res://sfx/ground_pound.wav"
+dest_files=[ "res://.import/ground_pound.wav-caedcc1955e2918315fdbfdf8d4b3411.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
