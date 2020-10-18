@@ -135,13 +135,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Ksufalljam 2020"
-run/main_scene="res://Arena/Arena.tscn"
+run/main_scene="res://ui/mainmenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 GlobalEffects="*res://effects/GlobalEffects.tscn"
 GlobalConsts="*res://global_consts.gd"
+GlobalSounds="*res://sfx/global_sounds.tscn"
 
 [display]
 

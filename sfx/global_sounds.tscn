@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sfx/Battle_theme.wav" type="AudioStream" id=1]
+
+[node name="GlobalSounds" type="Node"]
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
