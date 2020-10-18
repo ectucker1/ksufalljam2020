@@ -2,7 +2,7 @@ class_name GroundPoundMutation
 extends Mutation
 
 
-var COOLDOWN := 1.0
+var COOLDOWN := 0.9
 
 var timeout := 0.0
 
