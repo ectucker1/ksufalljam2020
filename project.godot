@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://player/mutations/basic_attack.gd"
 }, {
 "base": "Mutation",
+"class": "BoomerangMutation",
+"language": "GDScript",
+"path": "res://player/mutations/bone.gd"
+}, {
+"base": "Mutation",
 "class": "FireMutation",
 "language": "GDScript",
 "path": "res://player/mutations/fire.gd"
@@ -106,6 +111,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BasicAttackMutation": "",
+"BoomerangMutation": "",
 "FireMutation": "",
 "GrayscaleMutation": "",
 "GroundPoundMutation": "",

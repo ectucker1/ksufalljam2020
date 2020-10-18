@@ -34,6 +34,7 @@ func _ready():
 	available_actives.append(WarpDriveMutation.new())
 	available_actives.append(GroundPoundMutation.new())
 	available_actives.append(NeedleMutation.new())
+	available_actives.append(BoomerangMutation.new())
 
 
 func _physics_process(delta):
@@ -99,8 +100,9 @@ func choose_from(array):
 	if array.size() == 0:
 		return null
 	else:
-		var choice = array[randi() % array.size()]
-		array.erase(choice)
+		var index = randi() % array.size()
+		var choice = array[index]
+		array.remove(index)
 		return choice
 
 func _on_AgainButton_pressed():
