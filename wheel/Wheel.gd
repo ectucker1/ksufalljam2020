@@ -42,7 +42,10 @@ func _physics_process(delta):
 		spinning = false
 		$Wheel.angular_velocity = 0
 		
-		if ($Ray.get_collider().name == "Red"):
+		var collider = $Ray.get_collider()
+		if collider == null:
+			collider = $Wheel/Red
+		if $Ray.get_collider().name == "Red":
 			add_active()
 		else:
 			add_passive()

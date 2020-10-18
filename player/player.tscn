@@ -277,4 +277,4 @@ texture = ExtResource( 6 )
 stream = ExtResource( 8 )
 
 [node name="AudioAttack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
