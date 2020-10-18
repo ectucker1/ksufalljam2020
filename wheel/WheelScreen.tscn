@@ -15,39 +15,39 @@
 [ext_resource path="res://ui/ButtonStyleDisabled2.tres" type="StyleBox" id=15]
 [ext_resource path="res://ui/ButtonStyleBase2.tres" type="StyleBox" id=16]
 
-[sub_resource type="SegmentShape2D" id=1]
+[sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 0.0298462, -194.813 )
 b = Vector2( 136.521, -136.726 )
 
-[sub_resource type="SegmentShape2D" id=2]
+[sub_resource type="SegmentShape2D" id=4]
 a = Vector2( 136.726, 136.521 )
 b = Vector2( 194.813, 0.0299072 )
 
-[sub_resource type="SegmentShape2D" id=3]
+[sub_resource type="SegmentShape2D" id=5]
 a = Vector2( -136.521, 136.726 )
 b = Vector2( -0.0298462, 194.813 )
 
-[sub_resource type="SegmentShape2D" id=4]
+[sub_resource type="SegmentShape2D" id=6]
 a = Vector2( -184, 64 )
 b = Vector2( -174, -84 )
 
-[sub_resource type="SegmentShape2D" id=5]
+[sub_resource type="SegmentShape2D" id=7]
 a = Vector2( 195.47, -1.85901 )
 b = Vector2( 136.521, -136.726 )
 
-[sub_resource type="SegmentShape2D" id=6]
+[sub_resource type="SegmentShape2D" id=8]
 a = Vector2( 136.726, 136.521 )
 b = Vector2( -0.0298462, 194.813 )
 
-[sub_resource type="SegmentShape2D" id=7]
+[sub_resource type="SegmentShape2D" id=9]
 a = Vector2( -194.813, -0.0297852 )
 b = Vector2( -136.521, 136.726 )
 
-[sub_resource type="SegmentShape2D" id=8]
+[sub_resource type="SegmentShape2D" id=10]
 a = Vector2( -136.726, -136.521 )
 b = Vector2( 0.0298462, -194.813 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.729412, 1, 1, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -55,23 +55,8 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.415686, 0.568627, 0.568627, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0, 0, 0, 1 )
-
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.486275, 0.447059, 0.447059, 1 )
+bg_color = Color( 0.415686, 0.568627, 0.568627, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -85,7 +70,22 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.486275, 0.447059, 0.447059, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Gauge/Button:disabled")
 tracks/0/interp = 1
@@ -123,7 +123,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -173,7 +173,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=18]
 tracks/0/type = "value"
 tracks/0/path = NodePath("MutationDisplay:modulate")
 tracks/0/interp = 1
@@ -199,7 +199,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=19]
 length = 1.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("MutationDisplay:modulate")
@@ -240,7 +240,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -273,32 +273,32 @@ __meta__ = {
 [node name="Red" type="StaticBody2D" parent="Wheel"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/Red"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Wheel/Red"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Wheel/Red"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Wheel/Red"]
 rotation = 0.33489
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Blue" type="StaticBody2D" parent="Wheel"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/Blue"]
 position = Vector2( -0.657349, 1.88892 )
-shape = SubResource( 5 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wheel/Blue"]
-shape = SubResource( 6 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wheel/Blue"]
 shape = SubResource( 7 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wheel/Blue"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wheel/Blue"]
 shape = SubResource( 8 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wheel/Blue"]
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wheel/Blue"]
+shape = SubResource( 10 )
 
 [node name="Ray" type="RayCast2D" parent="."]
 position = Vector2( 518, 82 )
@@ -344,11 +344,11 @@ margin_top = -54.0
 margin_right = 224.0
 margin_bottom = 58.0
 focus_mode = 0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 11 )
-custom_styles/disabled = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -361,10 +361,10 @@ __meta__ = {
 }
 
 [node name="Anim" type="AnimationPlayer" parent="."]
-anims/appear = SubResource( 14 )
-anims/disappear = SubResource( 15 )
-anims/hide_mutation = SubResource( 16 )
-anims/show_mutation = SubResource( 17 )
+anims/appear = SubResource( 16 )
+anims/disappear = SubResource( 17 )
+anims/hide_mutation = SubResource( 18 )
+anims/show_mutation = SubResource( 19 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
@@ -430,7 +430,7 @@ rect_min_size = Vector2( 256, 72 )
 focus_mode = 0
 custom_styles/hover = ExtResource( 13 )
 custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = SubResource( 18 )
+custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = ExtResource( 15 )
 custom_styles/normal = ExtResource( 16 )
 custom_fonts/font = ExtResource( 12 )
