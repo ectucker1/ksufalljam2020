@@ -63,11 +63,11 @@ tracks/1/keys = {
 
 [node name="BattleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -80.0
 bus = "Music"
 
 [node name="WheelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -80.0
 bus = "Music"
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]

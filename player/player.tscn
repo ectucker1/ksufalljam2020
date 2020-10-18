@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/walkcycles.png" type="Texture" id=2]
@@ -13,14 +13,17 @@
 [ext_resource path="res://sfx/Player_warp.wav" type="AudioStream" id=11]
 [ext_resource path="res://sfx/Porcupine_shoot.wav" type="AudioStream" id=12]
 [ext_resource path="res://sfx/neck_snap.wav" type="AudioStream" id=13]
+[ext_resource path="res://player/copy_sprite.gd" type="Script" id=14]
+[ext_resource path="res://player/monkeyarms.png" type="Texture" id=15]
+[ext_resource path="res://player/goathorns.png" type="Texture" id=16]
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=1]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=2]
 radius = 12.0
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 resource_name = "Attack"
 length = 0.8
 tracks/0/type = "value"
@@ -50,10 +53,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=4]
 radius = 22.0
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -107,7 +110,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites:modulate")
@@ -122,7 +125,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 resource_name = "Walk"
 length = 0.6
 loop = true
@@ -178,27 +181,27 @@ tracks/3/keys = {
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Hurt"
 
-[sub_resource type="AnimationNodeOneShot" id=16]
+[sub_resource type="AnimationNodeOneShot" id=9]
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeStateMachine" id=18]
-states/Walk/node = SubResource( 17 )
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/Walk/node = SubResource( 10 )
 states/Walk/position = Vector2( 280.333, 85 )
 start_node = "Walk"
 
-[sub_resource type="AnimationNodeBlendTree" id=19]
+[sub_resource type="AnimationNodeBlendTree" id=12]
 graph_offset = Vector2( -507, 157.333 )
 nodes/Animation/node = SubResource( 8 )
 nodes/Animation/position = Vector2( -186.667, 253.333 )
-nodes/HurtShot/node = SubResource( 16 )
+nodes/HurtShot/node = SubResource( 9 )
 nodes/HurtShot/position = Vector2( 13.3333, 120 )
-nodes/States/node = SubResource( 18 )
+nodes/States/node = SubResource( 11 )
 nodes/States/position = Vector2( -200, 106.667 )
 node_connections = [ "output", 0, "HurtShot", "HurtShot", 0, "States", "HurtShot", 1, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -206,7 +209,7 @@ collision_mask = 2147483702
 script = ExtResource( 1 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -253,6 +256,68 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="MonkeyArms" type="Node2D" parent="Sprites"]
+visible = false
+
+[node name="RightMonkey" type="Sprite" parent="Sprites/MonkeyArms"]
+texture = ExtResource( 15 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../RightSprite")
+
+[node name="LeftMonkey" type="Sprite" parent="Sprites/MonkeyArms"]
+texture = ExtResource( 15 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../LeftSprite")
+
+[node name="UpMonkey" type="Sprite" parent="Sprites/MonkeyArms"]
+texture = ExtResource( 15 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../UpSprite")
+
+[node name="DownMonkey" type="Sprite" parent="Sprites/MonkeyArms"]
+texture = ExtResource( 15 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../DownSprite")
+
+[node name="GoatHorns" type="Node2D" parent="Sprites"]
+visible = false
+
+[node name="RightGoat" type="Sprite" parent="Sprites/GoatHorns"]
+texture = ExtResource( 16 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../RightSprite")
+
+[node name="LeftGoat" type="Sprite" parent="Sprites/GoatHorns"]
+texture = ExtResource( 16 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../LeftSprite")
+
+[node name="UpGoat" type="Sprite" parent="Sprites/GoatHorns"]
+texture = ExtResource( 16 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../UpSprite")
+
+[node name="DownGoat" type="Sprite" parent="Sprites/GoatHorns"]
+texture = ExtResource( 16 )
+vframes = 4
+hframes = 3
+script = ExtResource( 14 )
+sprite_path = NodePath("../../DownSprite")
+
 [node name="Attacks" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -269,10 +334,10 @@ damage = 10
 knockback_magnitude = 90.0
 
 [node name="Shape" type="CollisionShape2D" parent="Attacks/ChargeArea"]
-shape = SubResource( 10 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/ChargeArea"]
-anims/Attack = SubResource( 11 )
+anims/Attack = SubResource( 3 )
 
 [node name="GroundPound" type="Area2D" parent="Attacks"]
 position = Vector2( 0, 6 )
@@ -284,7 +349,7 @@ damage = 10
 knockback_magnitude = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/GroundPound"]
-shape = SubResource( 12 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Attacks/GroundPound"]
 visible = false
@@ -293,7 +358,7 @@ hframes = 4
 frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/GroundPound"]
-anims/Attack = SubResource( 13 )
+anims/Attack = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
@@ -310,15 +375,15 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hurt = SubResource( 14 )
-anims/Walk = SubResource( 15 )
+anims/Hurt = SubResource( 6 )
+anims/Walk = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 19 )
+tree_root = SubResource( 12 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/HurtShot/active = false
-parameters/States/playback = SubResource( 20 )
+parameters/States/playback = SubResource( 13 )
 
 [node name="Treads" type="Sprite" parent="."]
 visible = false
