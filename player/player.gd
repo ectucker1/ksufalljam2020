@@ -37,6 +37,7 @@ func _ready():
 	GlobalConsts.player = self
 	
 	connect("hurt", self, "hurt_anim")
+	connect("damage_dealt", self, "on_damage_dealt")
 	
 	set_primary_active(BasicAttackMutation.new())
 	set_secondary_active(BasicAttackMutation.new())
@@ -170,6 +171,10 @@ func hurt_anim(amount):
 		GlobalEffects.trauma += 0.4
 	elif GlobalEffects.trauma < 0.4:
 		GlobalEffects.trauma = 0.4
+	GlobalEffects.hitstop(0.25)
+
+func on_damage_dealt(amount):
+	GlobalEffects.hitstop(0.1)
 
 func remove_mutations():
 	if primary_active != null:
