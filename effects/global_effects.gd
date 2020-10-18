@@ -14,3 +14,9 @@ func _process(delta):
 
 func set_trauma(value):
 	trauma = clamp(value, 0.0, 1.0)
+
+func fade_out():
+	$FadeLayer/AnimationPlayer.play("fade_out")
+
+func fade_in():
+	$FadeLayer/AnimationPlayer.play("fade_in")
