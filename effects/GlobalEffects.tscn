@@ -206,6 +206,7 @@ __meta__ = {
 }
 
 [node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 15
 
 [node name="ColorRect" type="ColorRect" parent="FadeLayer"]
 modulate = Color( 1, 1, 1, 0 )
