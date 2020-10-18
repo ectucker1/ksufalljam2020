@@ -458,11 +458,20 @@ custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = "Start Fight"
 
-[node name="AudioSpin" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 16.0
+margin_right = 1024.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 1024, 0 )
+custom_fonts/font = ExtResource( 12 )
+text = "Spin for Mutations"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="AudioTransform" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
 [connection signal="gauge_released" from="Gauge" to="." method="_on_Gauge_gauge_released"]
 [connection signal="button_down" from="Gauge/Button" to="Gauge" method="_on_Button_button_down"]
 [connection signal="button_up" from="Gauge/Button" to="Gauge" method="_on_Button_button_up"]

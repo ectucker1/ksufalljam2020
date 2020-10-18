@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://player/mutations/mutation.gd"
 }, {
+"base": "Mutation",
+"class": "NeedleMutation",
+"language": "GDScript",
+"path": "res://player/mutations/needle.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -107,6 +112,7 @@ _global_script_class_icons={
 "HornsMutation": "",
 "LowerDamageMutation": "",
 "Mutation": "",
+"NeedleMutation": "",
 "Player": "",
 "PlayerStatus": "",
 "SharpTeethMutation": "",

@@ -33,6 +33,7 @@ func _ready():
 	available_actives.append(SpitMutation.new())
 	available_actives.append(WarpDriveMutation.new())
 	available_actives.append(GroundPoundMutation.new())
+	available_actives.append(NeedleMutation.new())
 
 
 func _physics_process(delta):
@@ -56,6 +57,7 @@ func spin_wheel(speed = 70):
 
 
 func show_screen():
+	$Title.text = "Round Finished: Continue your Mutation"
 	$Gauge.clear()
 	$Anim.play("appear")
 
