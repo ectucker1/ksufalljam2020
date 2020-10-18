@@ -37,6 +37,7 @@ func _ready():
 	GlobalConsts.player = self
 	
 	connect("hurt", self, "hurt_anim")
+	connect("killed", self, "on_killed")
 	
 	set_primary_active(BasicAttackMutation.new())
 	set_secondary_active(BasicAttackMutation.new())
@@ -171,6 +172,9 @@ func hurt_anim(amount):
 		GlobalEffects.trauma += 0.4
 	elif GlobalEffects.trauma < 0.4:
 		GlobalEffects.trauma = 0.4
+
+func on_killed():
+	$AudioDeath.play()
 
 func remove_mutations():
 	if primary_active != null:
