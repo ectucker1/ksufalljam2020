@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/walkcycles.png" type="Texture" id=2]
@@ -11,13 +11,13 @@
 [ext_resource path="res://sfx/Player_attack.wav" type="AudioStream" id=9]
 [ext_resource path="res://sfx/Enemy_hurt.wav" type="AudioStream" id=10]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=11]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=12]
 radius = 12.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=13]
 resource_name = "Attack"
 length = 0.5
 tracks/0/type = "value"
@@ -47,10 +47,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.1 )
 }
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=14]
 radius = 19.967
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=15]
 length = 0.35
 step = 0.05
 tracks/0/type = "value"
@@ -104,113 +104,49 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.05 )
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Hurt"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/RightSprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("AudioHurt")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 8 )
-} ],
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Walk"
-length = 0.6
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/RightSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 9, 10, 11 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprites/LeftSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 8 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprites/DownSprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprites/UpSprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 3, 4, 5 ]
-}
-
 [sub_resource type="AnimationNodeAnimation" id=8]
-animation = "Hurt"
-
-[sub_resource type="AnimationNodeOneShot" id=9]
-
-[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeStateMachine" id=11]
+[sub_resource type="AnimationNodeOneShot" id=16]
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Hurt"
+
+[sub_resource type="AnimationNodeOneShot" id=7]
+
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/Walk/node = SubResource( 8 )
+states/Walk/position = Vector2( 468.333, 91.6667 )
+start_node = "Walk"
+
+[sub_resource type="AnimationNodeBlendTree" id=10]
+graph_offset = Vector2( -652.145, 101.333 )
+nodes/Animation/node = SubResource( 6 )
+nodes/Animation/position = Vector2( -186.667, 253.333 )
+nodes/HurtShot/node = SubResource( 7 )
+nodes/HurtShot/position = Vector2( 66.6667, 120 )
+nodes/States/node = SubResource( 9 )
+nodes/States/position = Vector2( -200, 106.667 )
+node_connections = [ "output", 0, "HurtShot", "HurtShot", 0, "States", "HurtShot", 1, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachine" id=17]
 states/Walk/node = SubResource( 10 )
 states/Walk/position = Vector2( 468.333, 91.6667 )
 start_node = "Walk"
 
-[sub_resource type="AnimationNodeBlendTree" id=12]
+[sub_resource type="AnimationNodeBlendTree" id=18]
 graph_offset = Vector2( -507, 55 )
 nodes/Animation/node = SubResource( 8 )
 nodes/Animation/position = Vector2( -186.667, 253.333 )
-nodes/HurtShot/node = SubResource( 9 )
-nodes/HurtShot/position = Vector2( 66.6667, 120 )
-nodes/States/node = SubResource( 11 )
+nodes/HurtShot/node = SubResource( 16 )
+nodes/HurtShot/position = Vector2( 13.3333, 120 )
+nodes/States/node = SubResource( 17 )
 nodes/States/position = Vector2( -200, 106.667 )
 node_connections = [ "output", 0, "HurtShot", "HurtShot", 0, "States", "HurtShot", 1, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -218,7 +154,7 @@ collision_mask = 2147483702
 script = ExtResource( 1 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -281,10 +217,10 @@ damage = 10
 knockback_magnitude = 90.0
 
 [node name="Shape" type="CollisionShape2D" parent="Attacks/ChargeArea"]
-shape = SubResource( 2 )
+shape = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/ChargeArea"]
-anims/Attack = SubResource( 3 )
+anims/Attack = SubResource( 13 )
 
 [node name="GroundPound" type="Area2D" parent="Attacks"]
 position = Vector2( 0, 6 )
@@ -296,7 +232,7 @@ damage = 10
 knockback_magnitude = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/GroundPound"]
-shape = SubResource( 4 )
+shape = SubResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="Attacks/GroundPound"]
 visible = false
@@ -305,7 +241,7 @@ hframes = 4
 frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/GroundPound"]
-anims/Attack = SubResource( 5 )
+anims/Attack = SubResource( 15 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
@@ -322,15 +258,15 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hurt = SubResource( 6 )
-anims/Walk = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 12 )
+tree_root = SubResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/HurtShot/active = false
-parameters/States/playback = SubResource( 13 )
+parameters/States/playback = SubResource( 19 )
+parameters/States/Walk/HurtShot/active = false
+parameters/States/Walk/States/playback = SubResource( 20 )
 
 [node name="Treads" type="Sprite" parent="."]
 visible = false
